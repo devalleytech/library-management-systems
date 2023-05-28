@@ -1,0 +1,38 @@
+.bd-navbar {
+    background-color: #532892;
+    color: rgb(213, 198, 198);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+.nav-link {
+    color:rgb(226, 219, 219);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.nav-link:hover{
+    color:#fff;
+}
+
+
+.nav-item a {
+    color: #fff;
+}
+
+.nav-item a:hover {
+    color: #fff;
+}
+
+nav.container {
+    padding: 0;
+}
+
+.top-link {
+    color: #fff;
+    text-decoration: none;  
+}
+
+.top-link:hover {
+    color: #fff;
+
+}
