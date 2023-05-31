@@ -1,5 +1,5 @@
 .bd-navbar {
-    background-color: #532892;
+    background-color: #333;
     color: rgb(213, 198, 198);
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
 }
@@ -29,10 +29,26 @@ nav.container {
 
 .top-link {
     color: #fff;
-    text-decoration: none;  
+    text-decoration: none;
+    margin-top: 5px;
 }
 
 .top-link:hover {
     color: #fff;
+}
 
+a.nav-link.active {
+    background: #02598b !important;
+}
+
+.userType {
+    font-size: 14px;
+    color: #efebd9;
+    font-weight: 600;
+    line-height: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.logoutIcon {
+    font-size: 20px;
 }

@@ -1,16 +1,13 @@
-.footer-copy {
-    font-size: 12px;
-}
-
-footer {
-    background-color: #e5e5e5e5;
-    text-align: center;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
-}
-
-footer.px-3.py-2 {
+.footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #ddd;
+    height: 40px;
+        background: #e1dcc5;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 0;
+        border-top: 1px soild #333;
 }

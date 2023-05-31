@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./users.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FaUserPlus } from "react-icons/fa";
-import userFormValidation from '../../common/validateUsers';
+import {userRegisterFormValidation} from '../../common/validateUsers';
+import { postUser,getUser } from '../../common/user.service';
+
+
 
 const Signup = () => {
+
+  const navigate = useNavigate();
+
   const initialUserFormState = {
     id: null,
     fname: "",
@@ -13,17 +22,28 @@ const Signup = () => {
     password: "",
     role: "Member",
   };
+
   const [userForm, setUserForm] = useState(initialUserFormState);
   const [errors, setErrors] = useState({});
 
   const handleOnInputChange = (event) => {
-          const { name, value } = event.target;
+       const { name, value } = event.target;
        setUserForm({ ...userForm, [name]: value });
   };
 
-  const handleOnFormSubmit = (event) => {
+  const navigateToHome = () => {
+    setUserForm(initialUserFormState);
+    setErrors({});
+  }
+
+   const checkEmailAlreadyExists = (serverUsers,formData) => {
+     const user = serverUsers.find(user => user.email === formData.email);
+    if (user) return user;
+  };
+
+  const handleOnFormSubmit =  async (event) => {
     event.preventDefault();
-    setErrors(userFormValidation(userForm));
+    setErrors(userRegisterFormValidation(userForm));
     if (
       !userForm.fname ||
       !userForm.lname ||
@@ -32,13 +52,33 @@ const Signup = () => {
       !userForm.password ||
       !userForm.role
     )
-      return;
-    console.log(userForm);
-    setUserForm(initialUserFormState);
+     return;
+    const user = await getUser().then(res => checkEmailAlreadyExists(res, userForm));
+    if (user) {
+      toast.warn('Email Already Exists!');
+    } else {
+         postUser(userForm).then((result) => {
+            setUserForm(initialUserFormState);
+            setErrors({});
+            toast.success('User Registration have been done Successfully!');
+            setTimeout(() => {
+              navigate("/login");
+            }, 4000);
+        });
+      }
   };
 
+
   return (
-    <div className="row d-flex justify-content-center align-items-center mt-3 mb-5">
+    <div className="row d-flex justify-content-center align-items-center mt-3">
+      <ToastContainer
+          position="top-center"
+          theme="light"
+          autoClose={2000}
+          hideProgressBar={true}
+          newestOnTop={true}
+          style={{ width: '500px' }}
+        />
       <div className="col-lg-4 col-xl-8">
         <div className="card text-black">
           <div className="card-body">
@@ -62,6 +102,11 @@ const Signup = () => {
                         id="fname"
                         className="form-control"
                       />
+                      {errors.fname && (
+                        <div className="alert alert-danger p-2" role="alert">
+                          {errors.fname}
+                        </div>
+                      )}
                     </div>
                     <div className="form-outline flex-fill w-50 col-md-3">
                       <label className="form-label" htmlFor="lname">
@@ -75,13 +120,18 @@ const Signup = () => {
                         id="lname"
                         className="form-control"
                       />
+                      {errors.lname && (
+                        <div className="alert alert-danger p-2" role="alert">
+                          {errors.lname}
+                        </div>
+                      )}
                     </div>
                   </div>
 
                   <div className="d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill">
                       <label className="form-label" htmlFor="email">
-                        Phone
+                        Phone *
                       </label>
                       <input
                         type="text"
@@ -92,7 +142,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.phone && (
-                        <div class="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger p-2" role="alert">
                           {errors.phone}
                         </div>
                       )}
@@ -102,7 +152,7 @@ const Signup = () => {
                   <div className="d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill">
                       <label className="form-label" htmlFor="email">
-                        Email
+                        Email *
                       </label>
                       <input
                         type="text"
@@ -113,7 +163,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.email && (
-                        <div class="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger p-2" role="alert">
                           {errors.email}
                         </div>
                       )}
@@ -123,7 +173,7 @@ const Signup = () => {
                   <div className="d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill">
                       <label className="form-label" htmlFor="password">
-                        Password
+                        Password *  
                       </label>
                       <input
                         type="password"
@@ -134,7 +184,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.password && (
-                        <div class="alert alert-danger p-1" role="alert">
+                        <div className="alert alert-danger p-1" role="alert">
                           {errors.password}
                         </div>
                       )}
@@ -171,12 +221,20 @@ const Signup = () => {
                     </label>
                   </div>
 
-                  <div className="register-btn mt-2 py-4 w-100 ">
-                    <button type="submit" className="w-100 btn btn-primary">
-                      Register
+                  <div className="row register-btn mt-2 py-4">
+                    <div className="col-md-6">
+                      <button type="submit" className="btn btn-primary btn-large btn-block w-100">
+                      Submit
                     </button>
+                    </div>
+                    <div className="col-md-6">
+                       <button type="button" onClick={() => navigateToHome()} className="btn btn-primary btn-large btn-block w-100">
+                      Reset
+                    </button>
+                    </div>
                   </div>
                 </form>
+                
               </div>
             </div>
           </div>

@@ -3,11 +3,11 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="px-3 py-2">
-            <span className="footer-copy">
+        <div className="footer">
+            <span>
             © 2023 The Library Management Systems
             </span>
-        </footer>
+        </div>
     )
 }
 
