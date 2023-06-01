@@ -4,6 +4,9 @@
 }
 .card.text-black {
     border-radius: 15px;
+    min-height: 320px;
+        width: 70%;
+        margin: 0 auto;
 }
 
 .form-check.px-4.py-2 {
@@ -23,9 +26,12 @@
     margin-right:10px;
     margin-top: -5px;
 }
-.btn-primary {
+.buttonClass button {
     background-color: #02598b !important;
-    padding: 10px 0 !important;
-    font-weight: 600 !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
+        width: 15em;
+        border-radius: 8px;
+        color: #eee;
+        border: none;
+        height: 2.5em;
 }

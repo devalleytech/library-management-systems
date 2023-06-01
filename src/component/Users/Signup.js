@@ -84,15 +84,27 @@ const Signup = () => {
           <div className="card-body">
             <div className="row justify-content-center">
               <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
+                <div className="row">
+                    <div className="col-md-6">
+                      &nbsp;
+                    </div>
+                    <div className="col-md-6">
+                      &nbsp;
+                    </div>
+                  </div>
                 <h3 className="text-center mb-4 mx-md-4 mt-2 bd-title">
                   <FaUserPlus className="userIcon" />
-                  User Registration
+                    User Registration
                 </h3>
                 <form className="mx-1 mx-md-6" onSubmit={handleOnFormSubmit}>
+                   <div className="row">
+                    <div className="col-md-6"> &nbsp;</div>
+                    <div className="col-md-6"> &nbsp; </div>
+                  </div>
                   <div className="row d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill w-50 col-md-3">
                       <label className="form-label" htmlFor="fname">
-                        First Name
+                        First Name *
                       </label>
                       <input
                         type="text"
@@ -110,7 +122,7 @@ const Signup = () => {
                     </div>
                     <div className="form-outline flex-fill w-50 col-md-3">
                       <label className="form-label" htmlFor="lname">
-                        Last Name
+                        Last Name *
                       </label>
                       <input
                         type="text"
@@ -208,29 +220,28 @@ const Signup = () => {
                     </div>
                   </div>
 
-                  <div className="form-check pt-4">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="terms"
-                    />
-                    <label className="form-check-label" htmlFor="terms">
-                      I agree all statements in{" "}
-                      <a href="#!">Terms of service</a>
-                    </label>
+                  <div className="row">
+                    <div className="col-md-6"> &nbsp;</div>
+                    <div className="col-md-6"> &nbsp; </div>
                   </div>
-
-                  <div className="row register-btn mt-2 py-4">
-                    <div className="col-md-6">
-                      <button type="submit" className="btn btn-primary btn-large btn-block w-100">
+                  <div className="row register-btn">
+                    <div className="col-md-6 buttonClass">
+                      <button type="submit" >
                       Submit
                     </button>
                     </div>
-                    <div className="col-md-6">
-                       <button type="button" onClick={() => navigateToHome()} className="btn btn-primary btn-large btn-block w-100">
+                    <div className="col-md-6 buttonClass">
+                       <button type="button" onClick={() => navigateToHome()}>
                       Reset
                     </button>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-6">
+                      &nbsp;
+                    </div>
+                    <div className="col-md-6">
+                      &nbsp;
                     </div>
                   </div>
                 </form>

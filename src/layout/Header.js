@@ -23,7 +23,7 @@ const Header = () => {
     }
 
     return (
-        <header className="navbar navbar-expand-lg flex-column flex-md-row  bd-navbar">
+        <header className="navbar navbar-expand-lg flex-column flex-md-row bd-navbar px-2">
             <nav className="container">
                 <ul className="nav nav-pills">
                     <li className="nav-item">

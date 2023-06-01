@@ -9,6 +9,7 @@ import './users.css';
 const Login = () => {
 
   const navigate = useNavigate();
+
    const initialUserFormState = {
     email: "",
     password: "",
@@ -46,7 +47,13 @@ const Login = () => {
       }, 4000);
     }
   };
-  
+
+
+  const loginFormReset = (event) => {
+    event.preventDefault();
+    setErrors({});
+    setuserLoginForm(initialUserFormState);
+  }
     return (
       <div className="row d-flex justify-content-center align-items-center mt-5">
         <ToastContainer
@@ -62,12 +69,12 @@ const Login = () => {
           <div className="card-body">
             <div className="row justify-content-center">
               <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                <h3 className="text-center mb-4 mx-md-4 mt-4 bd-title">Login</h3>
+                <h3 className="text-center mb-4 mx-md-4 mt-4 bd-title">User Login</h3>
                 <form className="mx-1 mx-md-6" onSubmit={handleOnLoginFormSubmit}>
 
                   <div className="d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill mb-0">
-                    <label className="form-label" htmlFor="email">Email</label>
+                    <label className="form-label" htmlFor="email">Email *</label>
                         <input type="text" id="email" value={userLoginForm.email}
                         onChange={handleOnInputChange} name="email" className="form-control" />
                         {errors.email && (
@@ -80,7 +87,7 @@ const Login = () => {
 
                   <div className="d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill mb-0">
-                    <label className="form-label" htmlFor="password">Password</label>
+                    <label className="form-label" htmlFor="password">Password *</label>
                       <input type="password" id="password" value={userLoginForm.password}
                         onChange={handleOnInputChange} name="password" className="form-control" />
                         {errors.password && (
@@ -90,24 +97,25 @@ const Login = () => {
                       )}
                     </div>
                   </div>
-                  <div className="row register-btn mt-2 py-4">
-                    <div className="col-md-6">
-                      <button type="submit" className="btn btn-primary btn-large btn-block w-100">
-                      Login
+                  <div className="row register-btn mt-2 py-4 ">
+                    <div className="col-md-6 col-sm-6 col-lg-6 buttonClass">
+                      <button type="submit" >
+                      Submit
                     </button>
                     </div>
-                    <div className="col-md-6">
-                       <button type="submit" className="btn btn-primary btn-large btn-block w-100">
-                      Cancel
+                    <div className="col-md-6 col-sm-6 col-lg-6 buttonClass">
+                       <button type="submit" onClick={loginFormReset} >
+                      Reset
                     </button>
-                    </div>
+                      </div>  
                   </div>
                 </form>
-              </div>
+                </div>
             </div>
           </div>
         </div>
-      </div>
+        </div>
+        
     </div>
     )
 }
