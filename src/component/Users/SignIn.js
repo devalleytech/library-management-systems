@@ -1,15 +1,13 @@
-import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate,  } from "react-router-dom";
 import { getUser } from '../../common/user.service';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {userLoginFormValidation} from '../../common/validateUsers';
+import { userLoginFormValidation } from '../../common/ValidateUsers';
 import './users.css';
 
 const Login = () => {
-
   const navigate = useNavigate();
-
    const initialUserFormState = {
     email: "",
     password: "",
@@ -19,8 +17,8 @@ const Login = () => {
   const [errors, setErrors] = useState({});
 
   const handleOnInputChange = (event) => {
-       const { name, value } = event.target;
-       setuserLoginForm({ ...userLoginForm, [name]: value });
+    const { name, value } = event.target;
+    setuserLoginForm({ ...userLoginForm, [name]: value });
   };
 
    const checkUserCredencials = (serverUsers,formData) => {
@@ -35,26 +33,41 @@ const Login = () => {
     if (!userLoginForm.email ||!userLoginForm.password)
       return;
     
-    const user = await getUser().then(res => checkUserCredencials(res, userLoginForm));
+    const user = await getUser().then(res => checkUserCredencials(res, userLoginForm)).catch(e => {
+      console.log(e);
+    });
     
     if (user) {
       const { role } = user;
       localStorage.setItem('userInfo', JSON.stringify(user));
-      localStorage.setItem('loginStatus', true);
+      localStorage.setItem('userStatus', true);
       toast.success(`${role} Logged-In Successfully!`);
       setTimeout(() => {
-        navigate("/profile");
+         navigate("/profile");
       }, 4000);
+    } else {
+      setuserLoginForm(initialUserFormState);
+      toast.warn(`Bad Credencials`);
     }
   };
-
-
+  
   const loginFormReset = (event) => {
     event.preventDefault();
     setErrors({});
     setuserLoginForm(initialUserFormState);
   }
-    return (
+
+
+  const userStatusAfterlogin = localStorage.getItem("userStatus");
+  const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
+     useEffect(() => {
+      setUserStatus(userStatusAfterlogin);
+   }, [userStatusAfterlogin]);
+   
+    if (userStatus) {
+      navigate("/profile");
+    } 
+  return (
       <div className="row d-flex justify-content-center align-items-center mt-5">
         <ToastContainer
           position="top-center"
@@ -71,27 +84,25 @@ const Login = () => {
               <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
                 <h3 className="text-center mb-4 mx-md-4 mt-4 bd-title">User Login</h3>
                 <form className="mx-1 mx-md-6" onSubmit={handleOnLoginFormSubmit}>
-
                   <div className="d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill mb-0">
                     <label className="form-label" htmlFor="email">Email *</label>
                         <input type="text" id="email" value={userLoginForm.email}
                         onChange={handleOnInputChange} name="email" className="form-control" />
                         {errors.email && (
-                        <div className="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           {errors.email}
                         </div>
                       )}
                     </div>
                   </div>
-
                   <div className="d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill mb-0">
                     <label className="form-label" htmlFor="password">Password *</label>
                       <input type="password" id="password" value={userLoginForm.password}
                         onChange={handleOnInputChange} name="password" className="form-control" />
                         {errors.password && (
-                        <div className="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           {errors.password}
                         </div>
                       )}
@@ -115,7 +126,6 @@ const Login = () => {
           </div>
         </div>
         </div>
-        
     </div>
     )
 }

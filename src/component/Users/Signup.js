@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./users.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaUserPlus } from "react-icons/fa";
-import {userRegisterFormValidation} from '../../common/validateUsers';
+import {userRegisterFormValidation} from '../../common/ValidateUsers';
 import { postUser,getUser } from '../../common/user.service';
 
 
@@ -69,6 +69,17 @@ const Signup = () => {
   };
 
 
+  const userStatusAfterlogin = localStorage.getItem("userStatus");
+   const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
+     useEffect(() => {
+      setUserStatus(userStatusAfterlogin);
+   }, [userStatusAfterlogin]);
+   
+    if (userStatus) {
+      navigate("/profile");
+    } 
+
+
   return (
     <div className="row d-flex justify-content-center align-items-center mt-3">
       <ToastContainer
@@ -115,7 +126,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.fname && (
-                        <div className="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           {errors.fname}
                         </div>
                       )}
@@ -133,7 +144,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.lname && (
-                        <div className="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           {errors.lname}
                         </div>
                       )}
@@ -154,7 +165,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.phone && (
-                        <div className="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           {errors.phone}
                         </div>
                       )}
@@ -175,7 +186,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.email && (
-                        <div className="alert alert-danger p-2" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           {errors.email}
                         </div>
                       )}
@@ -196,7 +207,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.password && (
-                        <div className="alert alert-danger p-1" role="alert">
+                        <div className="alert alert-danger" role="alert">
                           {errors.password}
                         </div>
                       )}

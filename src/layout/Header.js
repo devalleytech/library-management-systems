@@ -1,26 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import './Header.css';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
+
 
 const Header = () => {
 
     const navigate = useNavigate();
-    const handleLogout = (event) => {
-        event.preventDefault();
-        localStorage.removeItem('loginStatus');
-        localStorage.removeItem('userInfo');
-        navigate("/");
-     }
-
-    let loggedInStatus, userInfo;
-
-    if (Object.keys('localStorage').length === 0) {
-        navigate("/"); 
-    } else {
-        loggedInStatus = localStorage.getItem("loginStatus");
+    let userInfo;
+    const userStatusAfterlogin = localStorage.getItem("userStatus");
+    const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
+     
+     useEffect(() => {
+      setUserStatus(userStatusAfterlogin);
+   }, [userStatusAfterlogin]);
+   
+    if (userStatus) {
         userInfo = JSON.parse(localStorage.getItem("userInfo"));
     }
+    
+
+    const handleLogout = (event) => {
+        event.preventDefault();
+        localStorage.removeItem('userInfo');
+        localStorage.removeItem('userStatus');
+        setUserStatus(false);
+        navigate("/login");
+     }
 
     return (
         <header className="navbar navbar-expand-lg flex-column flex-md-row bd-navbar px-2">
@@ -31,7 +38,12 @@ const Header = () => {
                     </li>
                 </ul>
                 <div className="form-inline ">
-                    {loggedInStatus ? <Link className="top-link" onClick={handleLogout}><FaSignOutAlt className="logoutIcon" /></Link> : <Link className="top-link" to="/register">Register</Link>} | { loggedInStatus ? <span className="userType">{ userInfo?.role } </span> : <Link className="top-link" to="/login">Login</Link> }
+                    {userStatus && <div>
+                        <span className="userType">
+                        {userInfo?.role}
+                        </span>
+                        &nbsp;<Link className="top-link" onClick={handleLogout}><FaSignOutAlt className="logoutIcon" /></Link></div>} 
+                     {!userStatus && <><Link className="top-link" to="/register">Register</Link> | <Link className="top-link" to="/login">Login</Link></>}
                 </div>
             </nav>
         </header>
