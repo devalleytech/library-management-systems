@@ -69,15 +69,20 @@ const Signup = () => {
 
 
   const userStatusAfterlogin = localStorage.getItem("userStatus");
-   const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
+  const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
+  
+  function redirectCheck() {
+     if (userStatus) {
+        navigate("/dashboard");
+    } 
+  }
+
      useEffect(() => {
-      setUserStatus(userStatusAfterlogin);
+       setUserStatus(userStatusAfterlogin);
+       redirectCheck();
    }, [userStatusAfterlogin]);
    
-    if (userStatus) {
-      navigate("/dashboard");
-    } 
-
+   
 
   return (
     <div className="row d-flex justify-content-center align-items-center mt-2">
@@ -228,7 +233,7 @@ const Signup = () => {
                     </button>
                     </div>
                   </div>
-                  
+                  <div>&nbsp;</div>
                 </form>
                 
               </div>

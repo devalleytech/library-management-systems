@@ -60,13 +60,17 @@ const Login = () => {
 
   const userStatusAfterlogin = localStorage.getItem("userStatus");
   const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
+   function redirectCheck() {
+     if (userStatus) {
+        navigate("/dashboard");
+    } 
+  }
      useEffect(() => {
-      setUserStatus(userStatusAfterlogin);
+       setUserStatus(userStatusAfterlogin);
+       redirectCheck();
    }, [userStatusAfterlogin]);
    
-    if (userStatus) {
-      navigate("/dashboard");
-    } 
+   
   return (
       <div className="row d-flex justify-content-center align-items-center mt-5">
         <ToastContainer
@@ -96,7 +100,7 @@ const Login = () => {
                       )}
                     </div>
                   </div>
-                  <div className="d-flex flex-row align-items-center mb-2">
+                  <div className="d-flex flex-row align-items-center mt-3 mb-2">
                     <div className="form-outline flex-fill mb-0">
                     <label className="form-label" htmlFor="password">Password *</label>
                       <input type="password" id="password" value={userLoginForm.password}
