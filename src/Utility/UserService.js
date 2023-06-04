@@ -12,9 +12,9 @@ export const postUser = async (data) => {
    return await axios.post(userURL, data);
 }
 
-// export const updateSingleCategory = async (data,id) => {
-//     return await axios.put(`${pageURL}/${id}`, data);
-// }
+export const updateSingleCategory = async (data,id) => {
+    return await axios.put(`${userURL}/${id}`, data);
+}
 
 // export const deleteSingleCategory = async (id) => {
 //     return await axios.delete(`${pageURL}/${id}`);

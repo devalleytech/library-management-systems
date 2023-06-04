@@ -99,8 +99,8 @@ const Signup = () => {
           <div className="card-body">
             <div className="row justify-content-center">
               <div className="col-md-10 col-lg-10 col-xl-10 mt-2 order-2 order-lg-1">
-                <h3 className="text-center mb-4  mx-md-4 bd-title">
-                  <FaUserPlus className="userIcon" />User Registration
+                <h3 className="text-center mb-4 py-3 mx-md-4 bd-title">
+                  User Registration&nbsp;<FaUserPlus className="userIcon" />
                 </h3>
                 <form className="mx-1 mt-4 mx-md-6" onSubmit={handleOnFormSubmit}>
                   <div className="row d-flex flex-row align-items-center mb-2">

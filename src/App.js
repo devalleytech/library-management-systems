@@ -5,7 +5,8 @@ import Signup from './Components/Users/SignUp';
 import Login from './Components/Users/SignIn';
 import Dashboard from './Components/Dashboard/Dashboard';
 import List from './Components/Users/List';
-import Content from './Components/Dashboard/Content';
+import Content from './Components/Pages/Content';
+import Editrole from './Components/Users/Editrole';
 import Notfound from './Components/Pages/Notfound';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} >
             <Route path='/dashboard' element={<Content />} />
             <Route path='/dashboard/list' element={<List />} />
+            <Route path="/dashboard/editrole" element={<Editrole />} />
           </Route>
           <Route path='*' element={<Notfound />} />
         </Routes>
