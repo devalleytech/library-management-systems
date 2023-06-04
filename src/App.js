@@ -1,29 +1,31 @@
 import React, {useState, useEffect} from "react";
-import './App.css';
-import Footer from './layout/Footer';
-import Header from './layout/Header';
-import Signup from './component/Users/SignUp';
-import Login from './component/Users/SignIn';
-import MemberProfile from './component/Users/Member';
+import Footer from './Layout/Footer';
+import Header from './Layout/Header';
+import Signup from './Components/Users/SignUp';
+import Login from './Components/Users/SignIn';
+import Dashboard from './Components/Dashboard/Dashboard';
+import List from './Components/Users/List';
+import Content from './Components/Dashboard/Content';
 import { Routes, Route } from "react-router-dom";
+import './App.css';
 
 
 function App() {
 
-  const [userStatus, setUserStatus] = useState(false);
 
-   useEffect(() => {
-      setUserStatus(localStorage.getItem("userStatus"));
-   }, [userStatus]);
     
   return (
     <>
       <Header  />
       <div className="container main">
         <Routes>
+            <Route exact path="/" element={<Signup />} />
             <Route exact path="/register" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
-            <Route exact path="/profile" element={<MemberProfile />} />
+          <Route path="/dashboard" element={<Dashboard />} >
+            <Route path='/dashboard' element={<Content />} />
+            <Route path='/dashboard/list' element={<List />} />
+            </Route>
         </Routes>
        </div> 
      <Footer />

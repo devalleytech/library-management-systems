@@ -1,0 +1,10 @@
+.table {
+    border-collapse: inherit;
+    background-color: #ccc;
+}
+
+.bgCustom {
+    background: linear-gradient(91.4deg, #2fb8ff 0%, #9eecd9 100%);
+    color: #333 !important;
+    border-radius: 10px;
+}

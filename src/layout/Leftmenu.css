@@ -1,0 +1,45 @@
+.arrow-right ul {
+    list-style: none;
+}
+
+.arrow-right ul li {
+    width: 250px;
+    background: #333b7d;
+    color: #fff;
+    margin-bottom: 1px;
+    padding: 10px 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.arrow-right ul li:hover {
+    width: 255px;
+}
+
+.arrow-right ul li:before,
+ul li:after {
+    width: 20px;
+    height: 50%;
+    position: absolute;
+    left: 100%;
+    content: "";
+}
+
+.arrow-right ul li:before {
+    top: 0px;
+    background: linear-gradient(to right top, #333b7d 50%, transparent 50%)
+}
+
+.arrow-right ul li:after {
+    top: 50%;
+    background: linear-gradient(to right bottom, #333b7d 50%, transparent 50%)
+}
+
+.leftMenu {
+    position: relative;
+    margin-left: -30px;
+}
+
+.active {
+    color: red;
+}

@@ -1,0 +1,57 @@
+.card {
+    box-shadow: 0 5px 5px -5px rgba(0, 0, 0, .15);
+}
+
+.card.text-black {
+    border-radius: 15px;
+    height: auto;
+    min-height: auto;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.form-check.px-4.py-2 {
+    margin: 0 0 0 10px;
+}
+
+.text-center h3 {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: inherit;
+}
+
+.register-btn {
+    margin-left: -2px;
+}
+
+.userIcon {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: -5px;
+}
+
+.buttonClass button {
+    background-color: #333b7d !important;
+    font-size: 15px !important;
+    width: 15em;
+    border-radius: 8px;
+    color: #eee;
+    border: none;
+    height: 2.5em;
+}
+
+.listtitle {
+    padding: 20px 0 0 22px;
+}
+
+.listtitle span {
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+h3.text-center {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}

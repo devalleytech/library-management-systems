@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./users.css";
+import "./Users.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaUserPlus } from "react-icons/fa";
-import {userRegisterFormValidation} from '../../common/ValidateUsers';
-import { postUser,getUser } from '../../common/user.service';
-
+import { userRegisterFormValidation } from '../../Utility/UsersValidation';
+import { postUser, getUser } from '../../Utility/UserService';
 
 
 const Signup = () => {
@@ -76,12 +75,12 @@ const Signup = () => {
    }, [userStatusAfterlogin]);
    
     if (userStatus) {
-      navigate("/profile");
+      navigate("/dashboard");
     } 
 
 
   return (
-    <div className="row d-flex justify-content-center align-items-center mt-3">
+    <div className="row d-flex justify-content-center align-items-center mt-2">
       <ToastContainer
           position="top-center"
           theme="light"
@@ -94,24 +93,11 @@ const Signup = () => {
         <div className="card text-black">
           <div className="card-body">
             <div className="row justify-content-center">
-              <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                <div className="row">
-                    <div className="col-md-6">
-                      &nbsp;
-                    </div>
-                    <div className="col-md-6">
-                      &nbsp;
-                    </div>
-                  </div>
-                <h3 className="text-center mb-4 mx-md-4 mt-2 bd-title">
-                  <FaUserPlus className="userIcon" />
-                    User Registration
+              <div className="col-md-10 col-lg-10 col-xl-10 mt-2 order-2 order-lg-1">
+                <h3 className="text-center mb-4  mx-md-4 bd-title">
+                  <FaUserPlus className="userIcon" />User Registration
                 </h3>
-                <form className="mx-1 mx-md-6" onSubmit={handleOnFormSubmit}>
-                   <div className="row">
-                    <div className="col-md-6"> &nbsp;</div>
-                    <div className="col-md-6"> &nbsp; </div>
-                  </div>
+                <form className="mx-1 mt-4 mx-md-6" onSubmit={handleOnFormSubmit}>
                   <div className="row d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill w-50 col-md-3">
                       <label className="form-label" htmlFor="fname">
@@ -126,7 +112,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.fname && (
-                        <div className="alert alert-danger" role="alert">
+                        <div className="alert alert-danger  py-1" role="alert">
                           {errors.fname}
                         </div>
                       )}
@@ -144,7 +130,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.lname && (
-                        <div className="alert alert-danger" role="alert">
+                        <div className="alert alert-danger  py-1" role="alert">
                           {errors.lname}
                         </div>
                       )}
@@ -165,7 +151,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.phone && (
-                        <div className="alert alert-danger" role="alert">
+                        <div className="alert alert-danger py-1" role="alert">
                           {errors.phone}
                         </div>
                       )}
@@ -186,7 +172,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.email && (
-                        <div className="alert alert-danger" role="alert">
+                        <div className="alert alert-danger py-1" role="alert">
                           {errors.email}
                         </div>
                       )}
@@ -207,7 +193,7 @@ const Signup = () => {
                         className="form-control"
                       />
                       {errors.password && (
-                        <div className="alert alert-danger" role="alert">
+                        <div className="alert alert-danger  py-1" role="alert">
                           {errors.password}
                         </div>
                       )}
@@ -230,12 +216,7 @@ const Signup = () => {
                       </select>
                     </div>
                   </div>
-
-                  <div className="row">
-                    <div className="col-md-6"> &nbsp;</div>
-                    <div className="col-md-6"> &nbsp; </div>
-                  </div>
-                  <div className="row register-btn">
+                  <div className="row register-btn mb-4 mt-4">
                     <div className="col-md-6 buttonClass">
                       <button type="submit" >
                       Submit
@@ -247,14 +228,7 @@ const Signup = () => {
                     </button>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      &nbsp;
-                    </div>
-                    <div className="col-md-6">
-                      &nbsp;
-                    </div>
-                  </div>
+                  
                 </form>
                 
               </div>
