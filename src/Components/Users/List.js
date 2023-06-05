@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { getUser } from '../../Utility/UserService';
+import { getUser } from '../../Utility/Services/UserService';
 import { FaUserEdit, FaListAlt } from "react-icons/fa";
 
-const List = () => {
+const Userlist = () => {
   
   const navigate = useNavigate();
   const userStatusAfterlogin = localStorage.getItem("userStatus");
@@ -54,7 +54,7 @@ const List = () => {
                       <td>{res.fname+" "+res.lname}</td>
                       <td>{res.email}</td>
                       <td>{res.role}</td>
-                      <td>12/12/12</td>
+                      <td>{res.createdAt}</td>
                       <td><button style={{border:'none'}} onClick={() => editRole(res)}><FaUserEdit className="logoutIcon" /></button></td>
                   </tr>)
                   })
@@ -66,4 +66,4 @@ const List = () => {
    )
 }
 
-export default List;
+export default Userlist;

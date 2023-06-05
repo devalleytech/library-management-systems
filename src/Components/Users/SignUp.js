@@ -4,8 +4,8 @@ import "./Users.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaUserPlus } from "react-icons/fa";
-import { userRegisterFormValidation } from '../../Utility/UsersValidation';
-import { postUser, getUser } from '../../Utility/UserService';
+import { userRegisterFormValidation } from '../../Utility/Validations/UsersValidation';
+import { postUser, getUser } from '../../Utility/Services/UserService';
 
 
 const Signup = () => {
@@ -20,6 +20,7 @@ const Signup = () => {
     phone: "",
     password: "",
     role: "Member",
+    createdAt: new Date().toString('dd/mm/yy').split(',')[0].slice(0,15),
   };
 
   const [userForm, setUserForm] = useState(initialUserFormState);

@@ -7,7 +7,8 @@
       "email": "gg@gmail.com",
       "phone": "9676765756",
       "password": "Cosrshcl@99",
-      "role": "Librarian"
+      "role": "Librarian",
+      "createdAt": "Sun Jun 04 2023"
     },
     {
       "id": 3,
@@ -16,25 +17,8 @@
       "email": "gg33@gmail.com",
       "phone": "9676765756",
       "password": "Cosrshcl@99",
-      "role": "Librarian"
-    },
-    {
-      "id": 4,
-      "fname": "sdfsdf",
-      "lname": "efew",
-      "email": "sdfsdf@gg.com",
-      "phone": "9769768655",
-      "password": "Cosrshcl@99",
-      "role": "Member"
-    },
-    {
-      "id": 5,
-      "fname": "dsad",
-      "lname": "efew",
-      "email": "sdfsdf11@gg.com",
-      "phone": "9676765756",
-      "password": "Cosrshcl@99",
-      "role": "Librarian"
+      "role": "Librarian",
+      "createdAt": "Mon Jun 05 2023"
     }
   ]
 }

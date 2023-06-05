@@ -4,9 +4,10 @@ import Header from './Layout/Header';
 import Signup from './Components/Users/SignUp';
 import Login from './Components/Users/SignIn';
 import Dashboard from './Components/Dashboard/Dashboard';
-import List from './Components/Users/List';
+import Userlist from './Components/Users/List';
 import Content from './Components/Pages/Content';
 import Editrole from './Components/Users/Editrole';
+import Bookadd from './Components/Books/Add';
 import Notfound from './Components/Pages/Notfound';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
@@ -24,7 +25,8 @@ function App() {
             <Route exact path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} >
             <Route path='/dashboard' element={<Content />} />
-            <Route path='/dashboard/list' element={<List />} />
+            <Route path='/dashboard/list' element={<Userlist />} />
+            <Route path='/dashboard/addbook' element={<Bookadd />} />
             <Route path="/dashboard/editrole" element={<Editrole />} />
           </Route>
           <Route path='*' element={<Notfound />} />

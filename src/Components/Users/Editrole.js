@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useNavigate, useLocation, Link  } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { updateSingleCategory } from '././../../Utility/UserService';
+import { updateUser } from '../../Utility/Services/UserService';
 import {  FaRegEdit } from "react-icons/fa";
 import './Users.css';
 
@@ -31,7 +31,7 @@ const Editrole = () => {
 
      const handleOnRoleSubmit = (event) => {
          event.preventDefault();
-         updateSingleCategory(userForm, state.id).then((res) => {
+         updateUser(userForm, state.id).then((res) => {
             toast.success('User role have been changed successfully!');
             setTimeout(() => {
               navigate("/dashboard/list");

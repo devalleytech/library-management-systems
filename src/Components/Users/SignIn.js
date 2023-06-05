@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate,  } from "react-router-dom";
-import { getUser } from '../../Utility/UserService';
+import { getUser } from '../../Utility/Services/UserService';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { userLoginFormValidation } from '../../Utility/UsersValidation';
+import { userLoginFormValidation } from '../../Utility/Validations/UsersValidation';
 import './Users.css';
 
 const Login = () => {
