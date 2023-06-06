@@ -2,7 +2,6 @@ import React, { useState} from "react";
 import { useNavigate, useLocation, Link  } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { updateUser } from '../../Utility/Services/UserService';
 import {  FaRegEdit } from "react-icons/fa";
 import './Users.css';
 
@@ -18,13 +17,22 @@ const Editrole = () => {
     };
 
      const handleOnRoleSubmit = (event) => {
-         event.preventDefault();
-         updateUser(userForm, state.id).then((res) => {
-            toast.success('User role have been changed successfully!');
+       event.preventDefault();
+       
+
+       const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userForm)
+    };
+    fetch(`http://localhost:3030/user/${state.id}`, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+        toast.success('User role have been updated successfully!');
             setTimeout(() => {
               navigate("/dashboard/list");
             }, 4000);
-        });
+      });
   };
   
     return (

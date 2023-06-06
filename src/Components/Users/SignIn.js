@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate,  } from "react-router-dom";
-import { getUser } from '../../Utility/Services/UserService';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { userLoginFormValidation } from '../../Utility/Validations/UsersValidation';
@@ -27,28 +26,34 @@ const Login = () => {
   };
 
 
-  const handleOnLoginFormSubmit = async (event) => {
+  const handleOnLoginFormSubmit =  (event) => {
     event.preventDefault();
     setErrors(userLoginFormValidation(userLoginForm));
     if (!userLoginForm.email ||!userLoginForm.password)
       return;
     
-    const user = await getUser().then(res => checkUserCredencials(res, userLoginForm)).catch(e => {
-      console.log(e);
-    });
+    fetch('http://localhost:3030/user')
+        .then(response => response.json()) 
+        .then(data => {
+          console.log(data);
+          let chekcUser = checkUserCredencials(data, userLoginForm);
+          if (chekcUser) {
+            const { role } = chekcUser;
+            localStorage.setItem('userInfo', JSON.stringify(chekcUser));
+            localStorage.setItem('userStatus', true);
+            toast.success(`${role} Logged-In Successfully!`);
+            setTimeout(() => {
+              navigate("/dashboard");
+            }, 4000);
+          } else {
+            setuserLoginForm(initialUserFormState);
+            toast.warn(`Bad Credencials`);
+          }
+        })
+        .catch(e => {
+           console.log(e);
+        });
     
-    if (user) {
-      const { role } = user;
-      localStorage.setItem('userInfo', JSON.stringify(user));
-      localStorage.setItem('userStatus', true);
-      toast.success(`${role} Logged-In Successfully!`);
-      setTimeout(() => {
-         navigate("/dashboard");
-      }, 4000);
-    } else {
-      setuserLoginForm(initialUserFormState);
-      toast.warn(`Bad Credencials`);
-    }
   };
   
   const loginFormReset = (event) => {

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { getUser } from '../../Utility/Services/UserService';
 import { FaUserEdit, FaListAlt } from "react-icons/fa";
 
 const Userlist = () => {
@@ -8,15 +7,17 @@ const Userlist = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   
- const getAllUsers = async () => {
-    return await getUser().then((res) => setUsers(res)).catch(e => {
-      console.log(e);
-    });
-  }
+
     useEffect(() => {
-      getAllUsers();
+        fetch('http://localhost:3030/user')
+        .then(response => response.json())    // one extra step
+        .then(data => {
+          console.log(data);
+          setUsers(data);
+        })
+        .catch(error => console.error(error));
     }, []);
-  
+
   
   const editRole = (resObj) => {
     navigate("/dashboard/editrole", {state:resObj});

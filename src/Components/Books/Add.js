@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Books.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { FabookPlus } from "react-icons/fa";
 import  BookFormValidation  from '../../Utility/Validations/BookValidation';
-import { postBook } from '../../Utility/Services/BookService';
+
 
 
 const Bookadd = () => {
@@ -62,15 +61,22 @@ const Bookadd = () => {
       !bookForm.price
     )
      return;
-     {
-         postBook(bookForm).then((result) => {
+    {
+
+      fetch('http://localhost:3030/book', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookForm)
+          }).then((result) => {
             setbookForm(initialbookFormState);
             setErrors({});
-            toast.success('Book submitted Successfully!');
+            toast.success('Bookn have been done added Successfully!');
             setTimeout(() => {
               navigate("/list");
             }, 4000);
-        });
+          }).catch(e => {
+            console.log(e);
+          });
       }
   };
 

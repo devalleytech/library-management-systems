@@ -5,13 +5,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaUserPlus } from "react-icons/fa";
 import { userRegisterFormValidation } from '../../Utility/Validations/UsersValidation';
-import { postUser, getUser } from '../../Utility/Services/UserService';
 
 
 const Signup = () => {
 
   const navigate = useNavigate();
-
   const initialUserFormState = {
     id: null,
     fname: "",
@@ -52,20 +50,31 @@ const Signup = () => {
       !userForm.password ||
       !userForm.role
     )
-     return;
-    const user = await getUser().then(res => checkEmailAlreadyExists(res, userForm));
-    if (user) {
-      toast.warn('Email Already Exists!');
-    } else {
-         postUser(userForm).then((result) => {
+      return; 
+    fetch('http://localhost:3030/user')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        let chekcUser = checkEmailAlreadyExists(data, userForm);
+        if (chekcUser) {
+          toast.warn('Sorry Email Already Exists!');
+        } else {
+          fetch('http://localhost:3030/user', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userForm)
+          }).then((result) => {
             setUserForm(initialUserFormState);
             setErrors({});
             toast.success('User Registration have been done Successfully!');
             setTimeout(() => {
               navigate("/login");
             }, 4000);
-        });
-      }
+          }).catch(e => {
+            console.log(e);
+          });
+        }
+      });
   };
 
 
