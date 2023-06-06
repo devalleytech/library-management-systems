@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import './Dashboard.css';
-import Sidebar from '../../Layout/Leftmenu';
+import Sidebar from '../../layout/Leftmenu';
 
 
 const Dashboard = () => {
