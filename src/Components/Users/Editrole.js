@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import { useNavigate, useLocation, Link  } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,18 +10,6 @@ const Editrole = () => {
   
     const { state } = useLocation();
     const navigate = useNavigate();
-    const userStatusAfterlogin = localStorage.getItem("userStatus");
-    const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
-
-    useEffect(() => {
-         setUserStatus(userStatusAfterlogin);
-    }, [userStatusAfterlogin]);
-
-    if (!userStatus) {
-        navigate("/login");
-    } 
-
-
     const [userForm, setUserForm] = useState(state);
    
     const handleOnRoleChange = (event) => {

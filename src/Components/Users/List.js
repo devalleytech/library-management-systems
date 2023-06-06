@@ -6,17 +6,6 @@ import { FaUserEdit, FaListAlt } from "react-icons/fa";
 const Userlist = () => {
   
   const navigate = useNavigate();
-  const userStatusAfterlogin = localStorage.getItem("userStatus");
-  const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
-
-     useEffect(() => {
-      setUserStatus(userStatusAfterlogin);
-   }, [userStatusAfterlogin]);
-   
-    if (!userStatus) {
-      navigate("/login");
-    } 
-  
   const [users, setUsers] = useState([]);
   
  const getAllUsers = async () => {

@@ -14,7 +14,8 @@ const Sidebar = () => {
             <li>Menu 3 Menu 3</li>
             <li>Menu 4</li>
             </ul> 
-        </div>
+            </div>
+            
         </>
     )
 } 

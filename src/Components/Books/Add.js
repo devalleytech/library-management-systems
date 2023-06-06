@@ -78,7 +78,7 @@ const Bookadd = () => {
 
    
   return (
-    <div className="row d-flex mt-4">
+    <div className="row d-flex">
       <ToastContainer
           position="top-center"
           theme="light"
@@ -87,10 +87,10 @@ const Bookadd = () => {
           newestOnTop={true}
           style={{ width: '500px' }}
         />
-      <div className="row d-flex ">
+      <div className="row d-flex">
           <div className="d-flex align-items-center justify-content-center">
               <div className="col-md-10 col-lg-10 col-xl-11 align-items-center">
-                <h2 className="text-center title mb-4 py-4 mx-md-4">
+                <h2 className="text-center title mb-4 py-2 mx-md-4">
                   Add Book&nbsp;
                   {/* <FabookPlus className="bookIcon" /> */}
                 </h2>
@@ -338,15 +338,14 @@ const Bookadd = () => {
                     </button>
                     </div>
                 </div>
-                  <div className="row mb-4 mt-4">
-                    <div className="col-md-12 buttonClass">
-                      <div >&nbsp;&nbsp;&nbsp;</div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+            </form>
+          
+             </div>
+            
+        </div>
+         
       </div>
+
     </div>
   );
 };
