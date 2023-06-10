@@ -7,7 +7,7 @@
       "email": "gg@gmail.com",
       "phone": "9676765756",
       "password": "Cosrshcl@99",
-      "role": "Member",
+      "role": "Librarian",
       "createdAt": "Sun Jun 04 2023"
     },
     {
@@ -17,7 +17,7 @@
       "email": "gg33@gmail.com",
       "phone": "9676765756",
       "password": "Cosrshcl@99",
-      "role": "Member",
+      "role": "Librarian",
       "createdAt": "Mon Jun 05 2023"
     },
     {
@@ -27,7 +27,7 @@
       "email": "gg1234@gmail.com",
       "phone": "9746454534",
       "password": "Cosrshcl@99",
-      "role": "Librarian",
+      "role": "Member",
       "createdAt": "Tue Jun 06 2023"
     },
     {

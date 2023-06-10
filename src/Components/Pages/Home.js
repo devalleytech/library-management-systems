@@ -7,7 +7,6 @@ const Home = () => {
             <h1>The Library Management Systems</h1>
             <p>Resize this responsive page to see the effect!</p> 
             </div>
-  
         <div className="container mt-4 py-4">
         <div className="row d-flex justify-content-center align-items-center">
             <div className="col-sm-5 mx-4 card card-body p-4">

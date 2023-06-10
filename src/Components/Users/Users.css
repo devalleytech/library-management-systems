@@ -40,6 +40,10 @@
     height: 2.5em;
 }
 
+.buttonClass button:hover {
+    background-color: #40499c !important;
+    color: #ddd;
+}
 .backClass button {
     background-color: #22201b !important;
     font-size: 15px !important;
@@ -48,6 +52,10 @@
     color: #eee;
     border: none;
     height: 2.5em;
+}
+.backClass button:hover {
+    background-color: #666 !important;
+    color: #eee;
 }
 .listtitle {
     padding: 20px 0 0 22px;
@@ -67,4 +75,8 @@ h3.text-center {
 .form-label {
     font-family: inherit;
     font-weight: 600;
+}
+
+.d-flex.flex-row.align-items-center.mt-4.mx-4 {
+    width: 78%;
 }
