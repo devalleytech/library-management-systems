@@ -1,34 +1,51 @@
-import React from "react";
-import Footer from './layout/Footer';
-import Header from './layout/Header';
-import Signup from './Components/Users/SignUp';
-import Login from './Components/Users/SignIn';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Userlist from './Components/Users/List';
-import Content from './Components/Pages/Content';
-import Editrole from './Components/Users/Editrole';
-import Bookadd from './Components/Books/Add';
+import React, {useState, useContext} from "react";
 import ProtectedRoute from './Utility/Auth/Protected';
-import Notfound from './Components/Pages/Notfound';
 import { Routes, Route } from "react-router-dom";
+import { UserLogin, UserSignup, Userlist, UserEditrole } from "./Components/Users";
+import { Header, Footer } from "./layout";
+import { Home, Notfound, About, Service, Contact } from "./Components/Pages";
+import { Dashboard } from './Components/Dashboard';
+import { AddBook } from "./Components/Books";
 import './App.css';
 
 
-function App() {
-    
+function App() {  
   return (
-    <>
-      <Header  />
+    <>  
+     <Header />
       <div className="container main">
-        <Routes>
-            <Route exact path="/" element={<Signup />} />
-            <Route exact path="/register" element={<Signup />} />
-            <Route exact path="/login" element={<Login />} />
-          <Route path="/dashboard" element={< ProtectedRoute comp={Dashboard} />} >
-            <Route path='/dashboard' element={< ProtectedRoute comp={Content} />} />
-            <Route path='/dashboard/list' element={< ProtectedRoute comp={Userlist} />} />
-            <Route path='/dashboard/addbook' element={< ProtectedRoute comp={Bookadd} />}  />
-            <Route path="/dashboard/editrole" element={< ProtectedRoute comp={Editrole} />} />
+        <Routes>          
+            <Route path='/' element={<React.Suspense  fallback={<>...</>}>
+                <Home />
+          </React.Suspense>} />
+          <Route path='/about' element={<React.Suspense  fallback={<>...</>}>
+                <About />
+          </React.Suspense>} />
+           <Route path='/service' element={<React.Suspense  fallback={<>...</>}>
+                <Service />
+          </React.Suspense>} />
+          <Route path='/contact' element={<React.Suspense  fallback={<>...</>}>
+                <Contact />
+            </React.Suspense>} />
+           <Route path='/register' element={<React.Suspense  fallback={<>...</>}>
+                <UserSignup />
+            </React.Suspense>} />
+            <Route path='/login' element={<React.Suspense  fallback={<>...</>}>
+                <UserLogin />
+            </React.Suspense>} />
+          <Route exact path="/dashboard"  element={<ProtectedRoute comp={Dashboard}  />} >
+             <Route  path='list' element={<React.Suspense  fallback={<>...</>}>
+                <ProtectedRoute comp={Userlist}  />
+            </React.Suspense>} />
+             <Route path='/dashboard/addbook' element={<React.Suspense  fallback={<>...</>}>
+                <ProtectedRoute comp={AddBook} />
+            </React.Suspense>} />
+            {/* <Route path='/dashboard/list' element={<React.Suspense  fallback={<>...</>}>
+                <ProtectedRoute comp={Userlist} />
+            </React.Suspense>} /> */}
+             <Route path='/dashboard/editrole' element={<React.Suspense  fallback={<>...</>}>
+                <ProtectedRoute comp={UserEditrole} />
+            </React.Suspense>} />
           </Route>
           <Route path='*' element={<Notfound />} />
         </Routes>

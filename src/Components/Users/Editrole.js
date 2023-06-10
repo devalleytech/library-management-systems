@@ -2,15 +2,20 @@ import React, { useState} from "react";
 import { useNavigate, useLocation, Link  } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {  FaRegEdit } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
+// import { Context } from './Context';
 import './Users.css';
+import { useUserInfoContext } from "./UserContext";
 
 const Editrole = () => {
   
-    const { state } = useLocation();
-    const navigate = useNavigate();
-    const [userForm, setUserForm] = useState(state);
-   
+  const { state } = useLocation();
+  const navigate = useNavigate();
+    const { setUserInfo } = useUserInfoContext();
+  const [userForm, setUserForm] = useState(state);
+  const updateRoleUrl = 'http://localhost:3030/user/';
+ 
+  
     const handleOnRoleChange = (event) => {
         const { name, value } = event.target;
         setUserForm({ ...userForm, [name]: value });
@@ -18,16 +23,16 @@ const Editrole = () => {
 
      const handleOnRoleSubmit = (event) => {
        event.preventDefault();
-       
-
        const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userForm)
-    };
-    fetch(`http://localhost:3030/user/${state.id}`, requestOptions)
+       };
+       
+    fetch(`${updateRoleUrl}${state.id}`, requestOptions)
         .then(response => response.json())
-        .then(data => {
+      .then(data => {
+        setUserInfo(data);
         toast.success('User role have been updated successfully!');
             setTimeout(() => {
               navigate("/dashboard/list");
@@ -37,6 +42,7 @@ const Editrole = () => {
   
     return (
         <>
+
         <div className="row">
             <ToastContainer
             position="top-center"
@@ -90,8 +96,8 @@ const Editrole = () => {
          
         </div>
         </div>
-    </div>
-        </>
+          </div>
+          </>
    )
 }
 

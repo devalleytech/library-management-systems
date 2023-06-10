@@ -6,11 +6,11 @@ const Userlist = () => {
   
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  
+ 
 
     useEffect(() => {
         fetch('http://localhost:3030/user')
-        .then(response => response.json())    // one extra step
+        .then(response => response.json()) 
         .then(data => {
           console.log(data);
           setUsers(data);
@@ -25,7 +25,7 @@ const Userlist = () => {
 
     return (
         <>
-            <div className="listtitle"><span>User List</span>&nbsp;&nbsp;<FaListAlt className="logoutIcon" /></div>
+            <h3 className="title">Users List</h3>
             <table className="table bg-light table-striped table-responsive w-100">
                 <thead className="thead-dark">
                <tr>
@@ -34,7 +34,7 @@ const Userlist = () => {
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
                     <th scope="col">Created At</th>
-                    <th>Update role</th>
+                    <th>Update Role</th>
                   </tr>
                 </thead>
                 <tbody>

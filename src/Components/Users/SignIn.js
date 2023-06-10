@@ -4,8 +4,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { userLoginFormValidation } from '../../Utility/Validations/UsersValidation';
 import './Users.css';
+import { useUserInfoContext } from "./UserContext";
 
 const Login = () => {
+
+  const { setUserInfo } = useUserInfoContext();
   const navigate = useNavigate();
    const initialUserFormState = {
     email: "",
@@ -39,7 +42,7 @@ const Login = () => {
           let chekcUser = checkUserCredencials(data, userLoginForm);
           if (chekcUser) {
             const { role } = chekcUser;
-            localStorage.setItem('userInfo', JSON.stringify(chekcUser));
+             setUserInfo(chekcUser);
             localStorage.setItem('userStatus', true);
             toast.success(`${role} Logged-In Successfully!`);
             setTimeout(() => {
@@ -77,7 +80,7 @@ const Login = () => {
    
    
   return (
-      <div className="row d-flex justify-content-center align-items-center mt-5">
+    <div className="row d-flex justify-content-center align-items-center mt-5">
         <ToastContainer
           position="top-center"
           theme="light"

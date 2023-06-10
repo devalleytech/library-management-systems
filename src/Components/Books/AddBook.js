@@ -7,7 +7,7 @@ import  BookFormValidation  from '../../Utility/Validations/BookValidation';
 
 
 
-const Bookadd = () => {
+const AddBook = () => {
 
   const navigate = useNavigate();
 
@@ -356,4 +356,4 @@ const Bookadd = () => {
   );
 };
 
-export default Bookadd;
+export default AddBook;

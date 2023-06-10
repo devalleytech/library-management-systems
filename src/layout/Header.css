@@ -72,3 +72,64 @@ button.btn-close {
     display: block;
     top: -20px;
 }
+li.nav-item {
+    padding-left: 20px;
+}
+
+ul.nav.nav-pills {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+a.nav-link.active {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: cursive;
+}
+
+.form-inline {
+    position: relative;
+    right: 0px;
+    left: 35px;
+    padding: 10px;
+}
+
+.top-link {
+    color: #ffffff;
+    text-decoration: none;
+    margin-top: 5px;
+    font-size: 18px;
+    text-decoration: underline;
+    font-family: cursive;
+}
+
+.logo {
+    position: relative;
+    left: 25px;
+    top: 6px;
+}
+
+.logo span {
+    display: inherit;
+    position: relative;
+    text-align: center;
+    top: -7px;
+    letter-spacing: 0.5em;
+    right: -1px;
+    color: white;
+    font-size: 13px;
+    font-family: cursive;
+}
+
+.welcome {
+    font-size: 16px;
+    color: #ddd;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+small {
+    color: #fccb4c;
+    font-weight: 500;
+    cursor: pointer;
+}

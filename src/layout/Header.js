@@ -4,6 +4,8 @@ import './Header.css';
 import { Link } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import Modal from 'react-modal';
+import lmslogo from './lmslogo.png';
+import { useUserInfoContext } from "../Components/Users/UserContext";
 
 const customStyles = {
   content: {
@@ -19,6 +21,7 @@ const customStyles = {
 
 const Header = () => {
 
+    const { getUser } = useUserInfoContext();
     const navigate = useNavigate();
     let userInfo;
     const userStatusAfterlogin = localStorage.getItem("userStatus");
@@ -26,22 +29,19 @@ const Header = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
      
      useEffect(() => {
-      setUserStatus(userStatusAfterlogin);
-   }, [userStatusAfterlogin]);
-   
+         setUserStatus(userStatusAfterlogin);
+     }, [userStatusAfterlogin]);
+    
+    
     if (userStatus) {
-        userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        userInfo = getUser;
     }
 
-
-    function openModal() {
+   
+    
+ function openModal() {
     setIsOpen(true);
   }
-
-//   function afterOpenModal() {
-//     // references are now sync'd and can be accessed.
-//     subtitle.style.color = '#f00';
-//   }
 
   function closeModal() {
     setIsOpen(false);
@@ -54,22 +54,41 @@ const Header = () => {
         localStorage.removeItem('userStatus');
         setUserStatus(false);
         navigate("/login");
-     }
+    }
 
     return (
         <>
             <header className="navbar navbar-expand-lg flex-column flex-md-row bd-navbar px-2">
-            <nav className="container">
+                
+                 <div className="logo">
+                        <Link to="/"><img src={lmslogo} alt="logo" height={'50px'} /></Link>
+                        <span>LMS</span>
+                </div>
+                 
+                <nav className="container">
+                 
                 <ul className="nav nav-pills">
                     <li className="nav-item">
                         <Link to="/" className="nav-link active">Home</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link to="/about" className="nav-link active">About Us</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/service" className="nav-link active">Services</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/contact" className="nav-link active">Contact Us</Link>
+                    </li>
                 </ul>
                 <div className="form-inline ">
-                    {userStatus && <div>
-                        <button className="btn btn-secondary" onClick={openModal}>
-                        {userInfo?.role}
-                        </button>
+                        {userStatus && <div className="welcome">
+                            Welcome:&nbsp;<small onClick={openModal}>{userInfo?.fname}</small> 
+                            &nbsp;&nbsp;<Link className="top-link" to="/dashboard">
+                                <button className="btn btn-secondary">
+                                        {userInfo?.role}
+                                </button>
+                            </Link>
                         &nbsp;&nbsp;<Link className="top-link" onClick={handleLogout}><FaSignOutAlt className="logoutIcon" /></Link></div>} 
                      {!userStatus && <><Link className="top-link" to="/register">Register</Link> | <Link className="top-link" to="/login">Login</Link></>}
                 </div>
@@ -95,7 +114,7 @@ const Header = () => {
                         <th>Role</th><td>{userInfo?.role}</td>
                     </tr>
                     <tr>
-                        <th>Created At</th><td>1</td>
+                        <th>Created At</th><td>{userInfo?.createdAt}</td>
                     </tr>
                     </tbody>
                     </table>

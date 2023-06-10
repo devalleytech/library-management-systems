@@ -11,3 +11,42 @@
 .container.mt-3 {
     padding: 0;
 }
+.col-sm-5.userLink {
+    width: 60%;
+    text-align: right;
+    padding-top: 5px;
+}
+
+.userLink a {
+    font-family: cursive;
+    font-weight: 500;
+    color: #333;
+}
+
+button.btn.btn-warning {
+    width: 48%;
+    background: #333b7d !important;
+    border: none;
+    color: white;
+}
+
+span.badge.bg-primary.badge-pill {
+    width: 26px;
+    padding: 5px 6px;
+    background: #333333 !important;
+}
+
+.col-sm-12.mb-2 h3 {
+    display: inline;
+}
+
+span.badge.bg-primary.badge-pill {
+    float: inherit;
+    position: relative;
+    left: 6px;
+    top: -4px;
+}
+
+.container.main {
+    padding: 10px 40px 0 40px;
+}
