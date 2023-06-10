@@ -50,3 +50,8 @@ span.badge.bg-primary.badge-pill {
 .container.main {
     padding: 10px 40px 0 40px;
 }
+.title a {
+    color: #333;
+    text-decoration: none;
+    font-family: cursive;
+}

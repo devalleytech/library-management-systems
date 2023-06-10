@@ -17,8 +17,10 @@ const Dashboard = () => {
             <div className="row d-flex justify-content-center align-items-center">
               <div className="col-sm-3 mx-4 card p-4">
                 <div className="row ">
-                  <div className="col-sm-12 mb-2"><h3>Users</h3><span className="badge bg-primary badge-pill">14</span></div>
-                  {/* <div className="col-sm-1 mt-1 mb-2"></div> */}
+                  <div className="col-sm-12 mb-2 title">
+                    <Link to="/dashboard/list"><h3>Users</h3></Link>
+                    <span className="badge bg-primary badge-pill">14</span>
+                  </div>
                   <ul className="list-group mt-4">
                     <li className="list-group-item d-flex justify-content-between align-items-center">
                       Cras justo odio
@@ -37,13 +39,6 @@ const Dashboard = () => {
                       <span className="badge badge-primary badge-pill">1</span>
                     </li>
                   </ul>
-                </div>
-                <div className="row mb-2">
-                  <div className="col-sm-12 userLink px-2 mt-4">
-                    <Link to="/dashboard/list"><button className="btn btn-warning">User List</button></Link>
-                    &nbsp;
-                    <Link to="/"><button className="btn btn-warning">Edit Role</button></Link>
-                  </div>
                 </div>
               </div>
               <div className="col-sm-3 mx-4 card p-4">
