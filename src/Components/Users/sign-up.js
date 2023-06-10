@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Users.css";
+import "./users.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaUserPlus } from "react-icons/fa";
-import { userRegisterFormValidation } from '../../Utility/Validations/UsersValidation';
+import { userRegisterFormValidation } from '../../Utility/Validations/users-validation';
 
 
 const Signup = () => {
@@ -69,7 +68,7 @@ const Signup = () => {
             toast.success('User Registration have been done Successfully!');
             setTimeout(() => {
               navigate("/login");
-            }, 4000);
+            }, 2000);
           }).catch(e => {
             console.log(e);
           });
@@ -103,15 +102,17 @@ const Signup = () => {
           hideProgressBar={true}
           newestOnTop={true}
           style={{ width: '500px' }}
-        />
-      <div className="col-lg-4 col-xl-8">
+      />
+      
+      <div className="col-lg-6 col-xl-8">
+        <div className="jumbotron text-center mt-2 py-4">
+          <h1>Registration</h1>
+          <p>Resize this responsive page to see the effect!</p>
+            </div>
         <div className="card text-black">
-          <div className="card-body">
+ 
             <div className="row justify-content-center">
-              <div className="col-md-10 col-lg-10 col-xl-10 mt-2 order-2 order-lg-1">
-                <h3 className="text-center mb-4 py-3 mx-md-4 bd-title">
-                  User Registration&nbsp;<FaUserPlus className="userIcon" />
-                </h3>
+              <div className="col-md-10 col-lg-10 col-xl-10 mt-2 py-2 order-2 order-lg-1">
                 <form className="mx-1 mt-4 mx-md-6" onSubmit={handleOnFormSubmit}>
                   <div className="row d-flex flex-row align-items-center mb-2">
                     <div className="form-outline flex-fill w-50 col-md-3">
@@ -231,25 +232,24 @@ const Signup = () => {
                       </select>
                     </div>
                   </div>
-                  <div className="row register-btn mb-4 mt-4">
-                    <div className="col-md-6 buttonClass">
+                  <div className="row mb-4 mt-4">
+                    <div className="col-md-5 col-sm-5 col-lg-5 mx-2 px-2 py-2 buttonClass">
                       <button type="submit" >
                       Submit
                     </button>
                     </div>
-                    <div className="col-md-6 buttonClass">
+                    <div className="col-md-5 col-sm-5 col-lg-5 mx-4  px-2 py-2 buttonClass">
                        <button type="button" onClick={() => navigateToHome()}>
                       Reset
                     </button>
                     </div>
                   </div>
-                  <div>&nbsp;</div>
                 </form>
                 
               </div>
             </div>
-          </div>
         </div>
+          <p className="col-sm-10 mx-4 py-4 mb-4 p-4"></p> 
       </div>
     </div>
   );

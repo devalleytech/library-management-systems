@@ -2,14 +2,16 @@ import React, { useState} from "react";
 import { useNavigate, useLocation, Link  } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './Users.css';
-import { useUserInfoContext } from "./UserContext";
+import './users.css';
+import { useUserInfoContext } from "../../Utility/ContextApi/user-context";
+
 
 const Editrole = () => {
   
   const { state } = useLocation();
   const navigate = useNavigate();
-    const { setUserInfo } = useUserInfoContext();
+  const { setUserInfo, getUser } = useUserInfoContext();
+
   const [userForm, setUserForm] = useState(state);
   const updateRoleUrl = 'http://localhost:3030/user/';
  
@@ -30,7 +32,9 @@ const Editrole = () => {
     fetch(`${updateRoleUrl}${state.id}`, requestOptions)
         .then(response => response.json())
       .then(data => {
-        setUserInfo(data);
+        if (getUser.id === data.id) {
+           setUserInfo(data);
+        }
         toast.success('User role have been updated successfully!');
             setTimeout(() => {
               navigate("/dashboard/list");
@@ -48,14 +52,15 @@ const Editrole = () => {
             hideProgressBar={true}
             newestOnTop={true}
             style={{ width: '500px' }}
-            />
-      <div className="col-lg-8 col-xl-8">
-        <div className="text-black">
-            <div className="row justify-content-left">
-              <div className="col-md-12 col-lg-12 col-xl-12">
-                <div className="listtitle">
-                 <h3 className="title py-2">Update User Role</h3></div>
-                <form className="mx-1 mx-md-6" onSubmit={handleOnRoleSubmit}>
+          />
+          <div className="jumbotron text-center py-2">
+            <Link><h1>Update Role</h1></Link>
+          </div>
+        <div className="container py-2">
+            <div className="row d-flex justify-content-center align-items-center">
+              <div className="col-sm-8 card">
+               <div className="row mt-2 py-2 px-4">
+                  <form className="mx-1 mx-md-6" onSubmit={handleOnRoleSubmit}>
                    <div className="d-flex flex-row align-items-center mt-4 mx-4">
                     <div className="form-outline flex-fill mt-1">
                       <label className="form-label" htmlFor="role">
@@ -83,10 +88,13 @@ const Editrole = () => {
                     </div>
                   </div>
                 </form>
+                  
+                  <div className="py-4"></div>
                 </div>
+              </div>
             </div>
-              </div>
-              </div>
+          </div>
+          
           </div>
      </>
    )

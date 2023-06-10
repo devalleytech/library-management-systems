@@ -45,6 +45,7 @@ span.badge.bg-primary.badge-pill {
     position: relative;
     left: 6px;
     top: -4px;
+    font-size: 13px;
 }
 
 .container.main {
@@ -59,4 +60,7 @@ span.badge.bg-primary.badge-pill {
     color: #0d1f4a;
     text-decoration: none;
     font-family: cursive;
+}
+.jumbotron.text-center.py-2 a {
+    color: #333;
 }

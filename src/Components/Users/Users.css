@@ -15,7 +15,7 @@
 }
 
 .text-center h3 {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 20px;
     font-family: inherit;
 }
@@ -75,6 +75,7 @@ h3.text-center {
 .form-label {
     font-family: inherit;
     font-weight: 600;
+    font-size: 16px;
 }
 
 .d-flex.flex-row.align-items-center.mt-4.mx-4 {

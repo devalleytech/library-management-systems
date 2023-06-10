@@ -1,11 +1,11 @@
-import React, {useState, useContext} from "react";
-import ProtectedRoute from './Utility/Auth/Protected';
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { UserLogin, UserSignup, Userlist, UserEditrole } from "./Components/Users";
-import { Header, Footer } from "./layout";
+import { Header, Footer } from "./Layout";
 import { Home, Notfound, About, Service, Contact } from "./Components/Pages";
 import { Dashboard } from './Components/Dashboard';
 import { AddBook } from "./Components/Books";
+import ProtectedRoute from './Utility/Auth/protected';
 import './App.css';
 
 
@@ -40,9 +40,6 @@ function App() {
              <Route path='/dashboard/addbook' element={<React.Suspense  fallback={<>...</>}>
                 <ProtectedRoute comp={AddBook} />
             </React.Suspense>} />
-            {/* <Route path='/dashboard/list' element={<React.Suspense  fallback={<>...</>}>
-                <ProtectedRoute comp={Userlist} />
-            </React.Suspense>} /> */}
              <Route path='/dashboard/editrole' element={<React.Suspense  fallback={<>...</>}>
                 <ProtectedRoute comp={UserEditrole} />
             </React.Suspense>} />

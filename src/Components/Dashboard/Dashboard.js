@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import './Dashboard.css';
+import './dashboard.css';
 
 const Dashboard = () => {
 
   const location = useLocation();
   const checkForoutlet = location.pathname;
 
+
+  const [users, setUsers] = useState([]);
+ 
+    useEffect(() => {
+        fetch('http://localhost:3030/user')
+        .then(response => response.json()) 
+        .then(data => {
+          setUsers(data);
+        })
+        .catch(error => console.error(error));
+    }, []);
+
+
     return (
       <>
-        {(checkForoutlet==="/dashboard") && <div className="">
-          <div className="jumbotron text-center mt-2 py-4">
-            <h1>LMS Dashboard  </h1>
+        {(checkForoutlet==="/dashboard") && <div className="py-4">
+          <div className="jumbotron text-center py-2">
+            <Link><h1>Dashboard</h1></Link>
           </div>
-          <div className="container py-2">
+          <div className="container py-4">
             <div className="row d-flex justify-content-center align-items-center">
               <div className="col-sm-3 mx-4 card">
                <div className="row mt-2 py-2 px-4">
-                  <div className="col-sm-12 mb-2 title">
+                  <div className="col-sm-12 mb-2 py-2 title">
                     <Link to="/dashboard/list"><h3>Users</h3></Link>
-                    <span className="badge bg-primary badge-pill">14</span>
+                    <span className="badge bg-primary badge-pill">{users && users.length}</span>
                   </div>
                   <ul className="list-group mt-2 py-2">
                     <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -39,12 +52,13 @@ const Dashboard = () => {
                       <span className="badge badge-primary badge-pill">1</span>
                     </li>
                   </ul>
+                  <div className="py-2"></div>
                 </div>
               </div>
               <div className="col-sm-3 mx-4 card">
                 <div className="row mt-2 py-2 px-4">
-                  <div className="col-sm-12 mb-2 title">
-                    <Link to="/dashboard/list"><h3>Users</h3></Link>
+                  <div className="col-sm-12 mb-2 py-2 title">
+                    <Link to="/dashboard/list"><h3>Books</h3></Link>
                     <span className="badge bg-primary badge-pill">14</span>
                   </div>
                   <ul className="list-group mt-2 py-2">
@@ -65,11 +79,12 @@ const Dashboard = () => {
                       <span className="badge badge-primary badge-pill">1</span>
                     </li>
                   </ul>
+                  <div className="py-2"></div>
                 </div>
               </div>
               <div className="col-sm-3 mx-4 card">
                <div className="row mt-2 py-2 px-4">
-                  <div className="col-sm-12 mb-2 title">
+                  <div className="col-sm-12 mb-2 py-2 title">
                     <Link to="/dashboard/list"><h3>Users</h3></Link>
                     <span className="badge bg-primary badge-pill">14</span>
                   </div>
@@ -91,6 +106,7 @@ const Dashboard = () => {
                       <span className="badge badge-primary badge-pill">1</span>
                     </li>
                   </ul>
+                  <div className="py-2"></div>
                 </div>
               </div>
             </div>
@@ -98,10 +114,8 @@ const Dashboard = () => {
           </div>
         </div>}
 
-        {(checkForoutlet!=="/dashboard") && <div className="card card-body mt-4 px-4">
-          <div className="row p-4">
-               <Outlet /> 
-          </div> 
+        {(checkForoutlet!=="/dashboard") && <div className="py-4">
+             <Outlet /> 
         </div>}
 </>
     )

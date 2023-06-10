@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import './Header.css';
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import './header.css';
 import { FaSignOutAlt } from "react-icons/fa";
 import Modal from 'react-modal';
 import lmslogo from './lmslogo.png';
-import { useUserInfoContext } from "../Components/Users/UserContext";
+import { useUserInfoContext } from "../Utility/ContextApi/user-context";
+
 
 const customStyles = {
   content: {
@@ -59,7 +59,6 @@ const Header = () => {
     return (
         <>
             <header className="navbar navbar-expand-lg flex-column flex-md-row bd-navbar px-2">
-                
                  <div className="logo">
                         <Link to="/"><img src={lmslogo} alt="logo" height={'50px'} /></Link>
                         <span>LMS</span>
@@ -95,7 +94,9 @@ const Header = () => {
             </nav>
             </header>
             
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="User information">
+            <Modal isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles} contentLabel="User information">
                 <div className="table-responsive">  
                 <div className="usertitle"><h4>Welcome: <i>{userInfo?.role}</i></h4>
                  <button type="button" class="btn-close" aria-label="Close" onClick={closeModal}></button></div>   
@@ -117,12 +118,10 @@ const Header = () => {
                         <th>Created At</th><td>{userInfo?.createdAt}</td>
                     </tr>
                     </tbody>
-                    </table>
+                  </table>
             </div>     
            </Modal>
         </>
-        
-       
     )
 }
 

@@ -1,8 +1,9 @@
-import Notfound from './Notfound';
-import Home from './Home';
-import About from './About';
-import Service from './Service';
-import Contact from './Contact';
+import { lazy } from 'react';
 
+const Home = lazy(() => import('./home'));
+const Notfound = lazy(() => import('./notfound'));
+const About = lazy(() => import('./about'));
+const Service = lazy(() => import('./service'));
+const Contact = lazy(() => import('./contact'));
 
-export {Home, Notfound, About, Service, Contact}
+export { Home, Notfound, About, Service, Contact };

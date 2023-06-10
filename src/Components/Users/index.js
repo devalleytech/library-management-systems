@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 
-const Userlist = lazy(() => import('../Users/List'));
-const UserLogin = lazy(() => import('../Users/SignIn'));
-const UserSignup = lazy(() => import('../Users/SignUp'));
-const UserEditrole = lazy(() => import('../Users/Editrole'));
+const Userlist = lazy(() => import('./users-list'));
+const UserLogin = lazy(() => import('./sign-in'));
+const UserSignup = lazy(() => import('./sign-up'));
+const UserEditrole = lazy(() => import('./edit-role'));
 
 export { UserSignup, UserLogin, Userlist, UserEditrole };

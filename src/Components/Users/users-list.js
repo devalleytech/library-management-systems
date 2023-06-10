@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { useNavigate } from "react-router-dom";
-import { FaUserEdit, FaListAlt } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { FaUserEdit } from "react-icons/fa";
 
 const Userlist = () => {
   
@@ -24,9 +24,16 @@ const Userlist = () => {
   }
 
     return (
-        <>
-            <h3 className="title py-2">Users List</h3>
-            <table className="table bg-light table-striped table-responsive w-100">
+      <>
+         <div className="jumbotron text-center py-2">
+            <Link><h1>Users List</h1></Link>
+          </div>
+        <div className="container py-2">
+            <div className="row d-flex justify-content-center align-items-center">
+              <div className="col-sm-10 mx-4 card">
+               <div className="row mt-2 py-2 px-4">
+                  
+                   <table className="table bg-light table-striped table-responsive w-100">
                 <thead className="thead-dark">
                <tr>
                     <th>SR #</th>
@@ -52,6 +59,16 @@ const Userlist = () => {
                 
                 </tbody>
               </table>
+                  <div className="py-1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+        
+
+
+           
         </>
    )
 }

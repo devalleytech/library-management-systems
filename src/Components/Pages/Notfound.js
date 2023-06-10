@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import notfound from './pagenotfound.png';
-import './Notfound.css';
+import './notfound.css';
 
 const Notfound = () => {
     const navigate = useNavigate();
