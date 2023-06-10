@@ -68,7 +68,7 @@ const Signup = () => {
             toast.success('User Registration have been done Successfully!');
             setTimeout(() => {
               navigate("/login");
-            }, 2000);
+            }, 4000);
           }).catch(e => {
             console.log(e);
           });

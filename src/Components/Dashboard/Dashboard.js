@@ -18,8 +18,6 @@ const Dashboard = () => {
         })
         .catch(error => console.error(error));
     }, []);
-
-
     return (
       <>
         {(checkForoutlet==="/dashboard") && <div className="py-4">
@@ -58,7 +56,7 @@ const Dashboard = () => {
               <div className="col-sm-3 mx-4 card">
                 <div className="row mt-2 py-2 px-4">
                   <div className="col-sm-12 mb-2 py-2 title">
-                    <Link to="/dashboard/list"><h3>Books</h3></Link>
+                    <Link to="/dashboard/addbook"><h3>Books</h3></Link>
                     <span className="badge bg-primary badge-pill">14</span>
                   </div>
                   <ul className="list-group mt-2 py-2">

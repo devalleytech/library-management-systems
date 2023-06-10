@@ -49,6 +49,36 @@
       "password": "Cosrshcl@99",
       "role": "Member",
       "createdAt": "Thu Jun 08 2023"
+    },
+    {
+      "id": 7,
+      "fname": "Ghan",
+      "lname": "Shyam",
+      "email": "ghan@gmail.com",
+      "phone": "989699544",
+      "password": "Cosrshcl@99",
+      "role": "Member",
+      "createdAt": "Sun Jun 11 2023"
+    },
+    {
+      "id": 8,
+      "fname": "sdfsdf",
+      "lname": "efew",
+      "email": "ghan123@gmail.com",
+      "phone": "967676575",
+      "password": "Cosrshcl@99",
+      "role": "Librarian",
+      "createdAt": "Sun Jun 11 2023"
+    },
+    {
+      "id": 9,
+      "fname": "sdfsdf",
+      "lname": "efew",
+      "email": "gg232@gmail.com",
+      "phone": "967676575",
+      "password": "Cosrshcl@99",
+      "role": "Member",
+      "createdAt": "Sun Jun 11 2023"
     }
   ]
 }

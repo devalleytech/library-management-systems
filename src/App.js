@@ -37,7 +37,7 @@ function App() {
              <Route  path='list' element={<React.Suspense  fallback={<>...</>}>
                 <ProtectedRoute comp={Userlist}  />
             </React.Suspense>} />
-             <Route path='/dashboard/addbook' element={<React.Suspense  fallback={<>...</>}>
+             <Route path='addbook' element={<React.Suspense  fallback={<>...</>}>
                 <ProtectedRoute comp={AddBook} />
             </React.Suspense>} />
              <Route path='/dashboard/editrole' element={<React.Suspense  fallback={<>...</>}>

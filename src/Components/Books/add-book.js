@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Books.css";
+import { useNavigate, Link } from "react-router-dom";
+import "./books.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import  BookFormValidation  from '../../Utility/Validations/book-validation';
@@ -92,15 +92,17 @@ const AddBook = () => {
           hideProgressBar={true}
           newestOnTop={true}
           style={{ width: '500px' }}
-        />
-      <div className="row d-flex">
-          <div className="d-flex align-items-center justify-content-center">
-              <div className="col-md-10 col-lg-10 col-xl-11 align-items-center">
-                <h2 className="text-center title mb-4 py-2 mx-md-4">
-                  Add Book&nbsp;
-                  {/* <FabookPlus className="bookIcon" /> */}
-                </h2>
-                <form className="mx-1 mt-4 mx-md-6" onSubmit={handleOnFormSubmit}>
+      />
+        <div className="jumbotron text-center py-2">
+            <Link><h1>Add Book</h1></Link>
+      </div>
+      
+
+         <div className="container py-4">
+            <div className="row d-flex justify-content-center align-items-center">
+              <div className="col-sm-10 card">
+               <div className="row mt-2 py-2 px-4">
+                   <form className="mx-1 mt-4 mx-md-6" onSubmit={handleOnFormSubmit}>
                   <div className="row d-flex flex-row mb-4">
                     <div className="form-outline flex-fill w-50 col-md-3">
                       <label className="form-label" htmlFor="fname">
@@ -333,24 +335,25 @@ const AddBook = () => {
                   </div>
 
                   <div className="row d-flex flex-row d-flex flex-row  mb-4">
-                    <div className="form-outline flex-fill  w-50 col-md-3 buttonClass">
+                    <div className="form-outline flex-fill  w-50 mt-4 col-md-3 buttonClass">
                       <button type="submit" className="w-100">
                       Submit
                     </button>
                 </div>
-                <div className="form-outline flex-fill w-50 col-md-3 buttonClass">
+                <div className="form-outline flex-fill w-50 mt-4 col-md-3 buttonClass">
                       <button type="button" className="w-100" onClick={() => navigateToHome()}>
                       Reset
                     </button>
                     </div>
                 </div>
             </form>
-          
-             </div>
-            
+            </div>
+             <p className="col-sm-10 mx-2 py-2"></p>
+              </div>
         </div>
-         
-      </div>
+          <p className="col-sm-10 mx-4 py-4 mb-4 p-4"></p>
+          </div>
+
 
     </div>
   );

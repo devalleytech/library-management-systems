@@ -1,5 +1,5 @@
 let validRegexEmail = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
-let phoneNum = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+let phoneNum = /^\(?([0-10]{3})\)?[-. ]?([0-10]{3})[-. ]?([0-10]{4})$/;
 let passwordRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/; 
 
 const userRegisterFormValidation = (values) => {
