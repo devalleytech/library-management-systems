@@ -67,7 +67,7 @@ const Dashboard = () => {
 
         {(checkForoutlet!=="/dashboard") && <div className="card card-body mt-4 px-4">
           <div className="row p-4">
-            <Outlet /> 
+               <Outlet /> 
           </div> 
         </div>}
 </>

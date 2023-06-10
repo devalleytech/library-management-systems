@@ -95,7 +95,7 @@ const Header = () => {
             </nav>
             </header>
             
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal">
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="User information">
                 <div className="table-responsive">  
                 <div className="usertitle"><span>Welcome: </span><i>{userInfo?.role}</i>
                  <button type="button" class="btn-close" aria-label="Close" onClick={closeModal}></button></div>   

@@ -25,7 +25,7 @@ const Userlist = () => {
 
     return (
         <>
-            <h3 className="title">Users List</h3>
+            <h3 className="title py-2">Users List</h3>
             <table className="table bg-light table-striped table-responsive w-100">
                 <thead className="thead-dark">
                <tr>
