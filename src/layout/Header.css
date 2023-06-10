@@ -133,3 +133,14 @@ small {
     font-weight: 500;
     cursor: pointer;
 }
+.usertitle i {
+    font-size: 16px;
+    font-family: cursive;
+    font-weight: 600;
+}
+
+.usertitle h4 {
+    padding-left: 7px;
+    font-weight: 600;
+    font-family: inherit;
+}

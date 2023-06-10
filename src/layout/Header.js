@@ -97,7 +97,7 @@ const Header = () => {
             
             <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="User information">
                 <div className="table-responsive">  
-                <div className="usertitle"><span>Welcome: </span><i>{userInfo?.role}</i>
+                <div className="usertitle"><h4>Welcome: <i>{userInfo?.role}</i></h4>
                  <button type="button" class="btn-close" aria-label="Close" onClick={closeModal}></button></div>   
                     <table className="table bgCustom table-responsive w-100 d-block d-md-table">
                     <tbody>
