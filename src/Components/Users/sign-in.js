@@ -3,17 +3,17 @@ import { useNavigate,  } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getUser } from '../../Utility/Services/UserService';
-import './users.css';
 import { useUserInfoContext } from "../../Utility/ContextApi/user-context";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import './users.css';
 
 
 const Login = () => {
 
   const { setUserInfo } = useUserInfoContext();
   const navigate = useNavigate();
- 
+  
   const userStatusAfterlogin = localStorage.getItem("userStatus");
   const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
 

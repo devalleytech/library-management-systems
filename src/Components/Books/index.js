@@ -1,3 +1,6 @@
 import { lazy } from 'react';
+
+
 const AddBook = lazy(() => import('./add-book'));
-export { AddBook };
+const BookList = lazy(() => import('./books-list'));
+export { AddBook, BookList };

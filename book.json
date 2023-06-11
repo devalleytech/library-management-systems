@@ -1,0 +1,32 @@
+{
+  "book": [
+    {
+      "title": "ssddd",
+      "subtitle": "asdsad",
+      "quantity": "dasdsa",
+      "language": "dasdasdasd",
+      "publication_date": "2023-06-13",
+      "publisher": "sadaddd",
+      "publication_place": "dsadsadd",
+      "book_status": "asdsad",
+      "description": "dasdsadad",
+      "price": "dsadadada",
+      "createdAt": "Sun Jun 11 2023",
+      "id": 1
+    },
+    {
+      "title": "gdfgdfg",
+      "subtitle": "gfdgfd",
+      "quantity": "gdfgdfg",
+      "language": "gdfgfd",
+      "publication_date": "2023-06-12",
+      "publisher": "gdfgdf",
+      "publication_place": "gdfgfdg",
+      "book_status": "gdfgdf",
+      "description": "gdfgfdgd",
+      "price": "gfdgdfg",
+      "createdAt": "Sun Jun 11 2023",
+      "id": 2
+    }
+  ]
+}

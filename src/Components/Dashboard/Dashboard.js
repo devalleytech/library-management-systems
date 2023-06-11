@@ -9,12 +9,22 @@ const Dashboard = () => {
 
 
   const [users, setUsers] = useState([]);
+   const [books, setBooks] = useState([]);
  
     useEffect(() => {
         fetch('http://localhost:3030/user')
         .then(response => response.json()) 
         .then(data => {
           setUsers(data);
+        })
+        .catch(error => console.error(error));
+    }, []);
+  
+    useEffect(() => {
+        fetch('http://localhost:3131/book')
+        .then(response => response.json()) 
+        .then(data => {
+          setBooks(data);
         })
         .catch(error => console.error(error));
     }, []);
@@ -29,7 +39,7 @@ const Dashboard = () => {
               <div className="col-sm-3 mx-4 card">
                <div className="row mt-2 py-2 px-4">
                   <div className="col-sm-12 mb-2 py-2 title">
-                    <Link to="/dashboard/list"><h3>Users</h3></Link>
+                    <Link to="/dashboard/users-list"><h3>Users</h3></Link>
                     <span className="badge bg-primary badge-pill">{users && users.length}</span>
                   </div>
                   <ul className="list-group mt-2 py-2">
@@ -56,8 +66,8 @@ const Dashboard = () => {
               <div className="col-sm-3 mx-4 card">
                 <div className="row mt-2 py-2 px-4">
                   <div className="col-sm-12 mb-2 py-2 title">
-                    <Link to="/dashboard/addbook"><h3>Books</h3></Link>
-                    <span className="badge bg-primary badge-pill">14</span>
+                    <Link to="/dashboard/books-list"><h3>Books</h3></Link>
+                    <span className="badge bg-primary badge-pill">{books && books.length}</span>
                   </div>
                   <ul className="list-group mt-2 py-2">
                     <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -83,7 +93,7 @@ const Dashboard = () => {
               <div className="col-sm-3 mx-4 card">
                <div className="row mt-2 py-2 px-4">
                   <div className="col-sm-12 mb-2 py-2 title">
-                    <Link to="/dashboard/list"><h3>Users</h3></Link>
+                    <Link to="/dashboard/users-list"><h3>Users</h3></Link>
                     <span className="badge bg-primary badge-pill">14</span>
                   </div>
                   <ul className="list-group mt-2 py-2">

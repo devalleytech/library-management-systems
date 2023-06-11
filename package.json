@@ -26,7 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "api_user": "json-server --watch user.json --port 3030",
-    "api_books": "json-server --watch user.json --port 3131"
+    "api_book": "json-server --watch book.json --port 3131"
   },
   "eslintConfig": {
     "extends": [

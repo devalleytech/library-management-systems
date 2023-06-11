@@ -40,8 +40,8 @@ const Signup = () => {
 
             <div className="row justify-content-center py-4">
               <div className="col-md-10 col-lg-10 col-xl-10 mt-2 order-2 order-lg-1">
-                 <Formik
-                initialValues={{ fname:'', lname:'', phone:'',role:'Member', password: '', email: '' }}
+             <Formik
+                initialValues={{ fname:'', lname:'', phone:'',role:'Member', password: '', email: '',createdAt: new Date().toString('dd/mm/yy').split(',')[0].slice(0,15), }}
                   validationSchema={Yup.object({
                   fname: Yup.string().max(20, 'Must be 20 characters or less').required('Password Required'),
                     lname: Yup.string().max(20, 'Must be 20 characters or less').required('Password Required'),
@@ -137,13 +137,8 @@ const Signup = () => {
                   </div>
                 </Form>
              </Formik>
-                
               </div>
-              
             </div>
-            
-      
-          
         </div>
          <p className="col-sm-10 mx-4 py-4 mb-4 p-4"></p> 
       </div>

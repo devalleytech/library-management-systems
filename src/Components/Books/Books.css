@@ -3,3 +3,32 @@
     font-family: Century Gothic;
     font-weight: 500;
 }
+
+.buttonClass button {
+    background: #333b7d;
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+label.form-label {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.py-2 h1 {
+    text-decoration: underline !important;
+}
+
+a.iconplus {
+    position: relative;
+    top: -8px;
+    left: 5px;
+}
+
+
+input#searchUsers {
+    border: 1px solid #ccc;
+}
