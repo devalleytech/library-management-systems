@@ -12,3 +12,8 @@
     padding: 0;
 }
 
+
+span.alert.alert-danger.py-1 {
+  width: 100%;
+  display: inline-block;
+}

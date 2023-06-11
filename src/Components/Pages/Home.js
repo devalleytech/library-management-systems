@@ -9,7 +9,7 @@ const Home = () => {
             </div>
         <div className="container  py-4">
         <div className="row d-flex justify-content-center align-items-center">
-            <div className="col-sm-4 col-md-4 mx-4 card card-body p-4">
+            <div className="col-sm-5 col-md-5 mx-4 card p-4">
             <h3>Librarian</h3>
              <div className="py-3"></div>           
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
@@ -19,7 +19,7 @@ const Home = () => {
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
                 <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
             </div>
-            <div className="col-sm-4 col-md-4 mx-4 card card-body p-4">
+            <div className="col-sm-5 col-md-5 mx-4 card  p-4">
              <h3>Member</h3>    
              <div className="py-3"></div>             
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>

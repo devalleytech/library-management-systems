@@ -1,10 +1,10 @@
 let validRegexEmail = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
-let phoneNum = /^\(?([0-10]{3})\)?[-. ]?([0-10]{3})[-. ]?([0-10]{4})$/;
+let phoneNum = /^[6-9]\d{9}$/;
 let passwordRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/; 
 
 const userRegisterFormValidation = (values) => {
 
-  let errors = {};
+  const errors = {};
    if (!values.fname) {
      errors.fname = "First Name is required";
    }
