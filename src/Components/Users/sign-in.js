@@ -14,18 +14,15 @@ const Login = () => {
   const { setUserInfo } = useUserInfoContext();
   const navigate = useNavigate();
  
-
   const userStatusAfterlogin = localStorage.getItem("userStatus");
   const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
-   function redirectCheck() {
-     if (userStatus) {
-        navigate("/dashboard");
-    } 
-  }
+
      useEffect(() => {
        setUserStatus(userStatusAfterlogin);
-       redirectCheck();
-     }, [userStatusAfterlogin]);
+        if (userStatus) {
+        navigate("/dashboard");
+       } 
+     }, [userStatus]);
   
 
   return (
@@ -49,9 +46,7 @@ const Login = () => {
               <Formik
                 initialValues={{ password: '', email: '' }}
                 validationSchema={Yup.object({
-                  password: Yup.string()
-                    .max(20, 'Must be 20 characters or less')
-                    .required('Password Required'),
+                  password: Yup.string().max(20, 'Must be 20 characters or less').required('Password Required'),
                   email: Yup.string().email('Invalid email address').required('Email Required'),
                 })}
                 onSubmit={ (values, {setSubmitting }) => {
@@ -64,9 +59,9 @@ const Login = () => {
                             toast.success(`${role} Logged-In Successfully!`);
                             setUserInfo(chekcUser);
                             localStorage.setItem('userStatus', true);
-                          setTimeout(() => {
-                            navigate("/dashboard");
-                          }, 1000);
+                            setTimeout(() => {
+                              navigate("/dashboard");
+                            }, 1000);
                         } else {
                           setSubmitting(false);
                           toast.warn(`Bad Credencials`);

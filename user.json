@@ -9,6 +9,15 @@
       "password": "Cosrshcl@99",
       "role": "Librarian",
       "createdAt": "Sun Jun 04 2023"
+    },
+    {
+      "fname": "topa",
+      "lname": "chand",
+      "phone": "9676765755",
+      "role": "Member",
+      "password": "Cosrshcl@99",
+      "email": "ggt@gmail.com",
+      "id": 3
     }
   ]
 }
