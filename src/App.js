@@ -4,7 +4,7 @@ import { UserLogin, UserSignup, Userlist, UserEditrole } from "./Components/User
 import { Header, Footer } from "./Layout";
 import { Home, Notfound, About, Service, Contact } from "./Components/Pages";
 import { Dashboard } from './Components/Dashboard';
-import { AddBook, BookList } from "./Components/Books";
+import { AddBook, BookList,BookEdit } from "./Components/Books";
 import ProtectedRoute from './Utility/Auth/protected';
 import './App.css';
 
@@ -43,6 +43,10 @@ function App() {
 
             <Route path='books-list' element={<React.Suspense  fallback={<>...</>}>
                 <ProtectedRoute comp={BookList} />
+            </React.Suspense>} />
+
+               <Route path='edit-book' element={<React.Suspense  fallback={<>...</>}>
+                <ProtectedRoute comp={BookEdit} />
             </React.Suspense>} />
             
              <Route path='/dashboard/editrole' element={<React.Suspense  fallback={<>...</>}>

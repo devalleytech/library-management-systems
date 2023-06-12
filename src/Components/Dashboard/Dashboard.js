@@ -1,16 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { FaPlusSquare, FaSearch } from "react-icons/fa";
+import { FaPlusSquare, FaSearch,FaRegUserCircle } from "react-icons/fa";
+import { useUserInfoContext } from "../../Utility/ContextApi/user-context";
+import Modal from 'react-modal';
 import './dashboard.css';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width:'50%'
+  },
+};
 
 const Dashboard = () => {
 
   const location = useLocation();
+  const { getUser } = useUserInfoContext();
   const checkForoutlet = location.pathname;
 
 
   const [users, setUsers] = useState([]);
-   const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]);
+   const [modalIsOpen, setIsOpen] = useState(false);
  
     useEffect(() => {
         fetch('http://localhost:3030/user')
@@ -29,6 +45,17 @@ const Dashboard = () => {
         })
         .catch(error => console.error(error));
     }, []);
+  
+  
+   function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+
     return (
       <>
         {(checkForoutlet==="/dashboard") && <div className="py-2 mt-2">
@@ -45,6 +72,14 @@ const Dashboard = () => {
                     <span className="badge bg-primary badge-pill">{users && users.length}</span>
                 </div>
               </div>
+
+              <div className="col-sm-3 col-md-3">
+                  <div className="title">
+                  <Link onClick={openModal}><h3>Profile</h3></Link>
+                  <span className="px-2"><FaRegUserCircle size={22} color="#333b7d" /></span>
+                    
+                </div>
+              </div>
               
               <div className="col-sm-3 col-md-3">
                   <div className="title">
@@ -54,12 +89,17 @@ const Dashboard = () => {
               </div>
               <div className="col-sm-3 col-md-3">
                   <div className="title">
-                    <Link to="/dashboard/addbook"><h3>Add Book</h3></Link>&nbsp;<span><FaPlusSquare size={25} color="#333b7d" /></span>
+                  <Link to="/dashboard/addbook"><h3>Add Book</h3></Link>
+                  <span className="px-2"><FaPlusSquare size={25} color="#333b7d" /></span>
                 </div>
               </div>
+              
+            </div>
+            <div className="row mt-4 pt-4">
               <div className="col-sm-3 col-md-3">
                   <div className="title">
-                    <Link to="/dashboard/books-list"><h3>Search Book</h3></Link>&nbsp;<span><FaSearch size={25} color="#333b7d" /></span>
+                  <Link to="/dashboard/books-list"><h3>Search Book</h3></Link>
+                  <span className="px-2"><FaSearch size={25} color="#333b7d" /></span>
                 </div>
               </div>
             </div>
@@ -70,6 +110,34 @@ const Dashboard = () => {
         {(checkForoutlet!=="/dashboard") && <div className="py-4">
              <Outlet /> 
         </div>}
+
+         <Modal isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={customStyles} contentLabel="User information">
+                <div className="table-responsive">  
+                <div className="usertitle"><h4>Welcome: <i>{getUser?.role}</i></h4>
+                 <button type="button" class="btn-close" aria-label="Close" onClick={closeModal}></button></div>   
+                    <table className="table bgCustom table-responsive w-100 d-block d-md-table">
+                    <tbody>
+                    <tr>
+                        <th>Name</th><td>{getUser?.fname+" "+getUser?.lname}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th><td>{getUser?.email}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th><td>{getUser?.phone}</td>
+                    </tr>
+                    <tr>
+                        <th>Role</th><td>{getUser?.role}</td>
+                    </tr>
+                    <tr>
+                        <th>Created At</th><td>{getUser?.createdAt}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+            </div>     
+           </Modal>
 </>
     )
 }

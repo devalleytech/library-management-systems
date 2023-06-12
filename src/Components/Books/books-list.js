@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEdit, FaPlusSquare } from "react-icons/fa";
 import "./books.css";
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,10 +7,11 @@ import { getBook } from '../../Utility/Services/BookService';
 
 const BookList = () => {
 
+  
+    const navigate = useNavigate();
     const [storeBookValues, setStoreBookValues] = useState([]);
     const [searchBook, setSearchBook] = useState("");
     
-
     const handleSearchChange = value => {;
         setSearchBook(value);
         filterBookData(value);
@@ -39,11 +40,16 @@ const BookList = () => {
     getAllBooks();
   }, []);
 
+  const editBook = (resObj) => {
+    navigate("/dashboard/edit-book", {state:resObj});
+  }
+
     return (
-        <>
+     <>
        <div className="row d-flex">
         <div className="jumbotron text-center py-2">
-            <h1>Book List <Link to="/dashboard/addbook" className="iconplus"><FaPlusSquare size={30} color="#333b7d" /></Link></h1>
+            <h1>Book List<Link to="/dashboard/addbook" className="iconplus">
+            <FaPlusSquare size={30} color="#333b7d" /></Link></h1>
        </div>
          <div className="container py-4">
             <div className="row d-flex justify-content-center align-items-center">
@@ -79,11 +85,10 @@ const BookList = () => {
                       <td>{res.quantity}</td>
                       <td>{res.book_status}</td>
                       <td>{res.createdAt}</td>
-                      <td><button style={{border:'none'}}><FaEdit size={22} /></button></td>
+                      <td><button style={{border:'none'}} onClick={() => editBook(res)}><FaEdit size={22} /></button></td>
                   </tr>)
-                  })
+                    })
                   }
-                
                  </tbody>
               </table>
               </div>
@@ -91,8 +96,6 @@ const BookList = () => {
         </div>
           <p className="col-sm-10 mx-4 py-4 mb-4 p-4"></p>
           </div>
-
-
     </div>
       </>
    
