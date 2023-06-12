@@ -13,7 +13,6 @@ const AddBook = () => {
 
   const navigate = useNavigate();
 
-
   return (
     <div className="row d-flex">
       <ToastContainer
@@ -25,7 +24,8 @@ const AddBook = () => {
           style={{ width: '500px' }}
       />
         <div className="jumbotron text-center py-2">
-            <h1>Add Book <Link to="/dashboard/books-list" className="iconplus"><FaRegListAlt size={30} color="#333b7d" /></Link></h1>
+        <h1>Add Book <Link to="/dashboard/books-list" className="iconplus">
+          <FaRegListAlt size={30} color="#333b7d" /></Link></h1>
        </div>
       
          <div className="container py-4">
@@ -59,9 +59,7 @@ const AddBook = () => {
                   price: Yup.string().required('Price Required'),
                 })}
                 onSubmit={(values, { setSubmitting }) => {
-                  console.log(values);
                   setTimeout(() => {
-                    console.log(values);
                     postBook(values).then((result) => {
                               toast.success('Book Added Successfully!');
                               setTimeout(() => {

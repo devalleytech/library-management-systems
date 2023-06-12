@@ -85,7 +85,7 @@ const Header = () => {
                             Welcome:&nbsp;<small onClick={openModal}>{userInfo?.fname}</small> 
                             &nbsp;&nbsp;<Link className="top-link" to="/dashboard">
                                 <button className="btn btn-secondary">
-                                        {userInfo?.role}
+                                      Dashboard
                                 </button>
                             </Link>
                         &nbsp;&nbsp;<Link className="top-link" onClick={handleLogout}><FaSignOutAlt className="logoutIcon" /></Link></div>} 

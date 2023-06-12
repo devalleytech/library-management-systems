@@ -72,6 +72,7 @@ button.btn-close {
     display: block;
     top: -30px;
 }
+
 li.nav-item {
     padding-left: 20px;
 }
@@ -133,6 +134,7 @@ small {
     font-weight: 500;
     cursor: pointer;
 }
+
 .usertitle i {
     font-size: 16px;
     font-family: cursive;
@@ -143,4 +145,9 @@ small {
     padding-left: 7px;
     font-weight: 600;
     font-family: inherit;
+}
+
+button.btn.btn-secondary {
+    font-size: 16px;
+    padding: 8px 12px;
 }

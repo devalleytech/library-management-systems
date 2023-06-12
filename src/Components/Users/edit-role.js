@@ -37,7 +37,7 @@ const Editrole = () => {
         }
         toast.success('User role have been updated successfully!');
             setTimeout(() => {
-              navigate("/dashboard/list");
+              navigate("/dashboard/users-list");
             }, 3000);
       });
   };
@@ -84,7 +84,7 @@ const Editrole = () => {
                       </button>
                        </div>
                     <div className="col-md-6  col-sm-5 col-lg-5 backClass">
-                     <Link  to="/dashboard/list"><button className="btn w-100 btn-small">Back</button></Link>
+                     <Link  to="/dashboard/users-list"><button className="btn w-100 btn-small">Back</button></Link>
                     </div>
                   </div>
                 </form>

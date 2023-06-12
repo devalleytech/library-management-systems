@@ -8,9 +8,11 @@
     color: #333 !important;
     border-radius: 10px;
 }
+
 .container.mt-3 {
     padding: 0;
 }
+
 .col-sm-5.userLink {
     width: 60%;
     text-align: right;
@@ -33,7 +35,7 @@ button.btn.btn-warning {
 span.badge.bg-primary.badge-pill {
     width: 26px;
     padding: 5px 6px;
-    background: #333333 !important;
+    background: #333b7d !important;
 }
 
 .col-sm-12.mb-2 h3 {
@@ -44,23 +46,51 @@ span.badge.bg-primary.badge-pill {
     float: inherit;
     position: relative;
     left: 6px;
-    top: -4px;
+    top: 0;
     font-size: 13px;
 }
 
 .container.main {
     padding: 10px 40px 0 40px;
 }
+
+.title {
+    height: 80px;
+    text-decoration: underline;
+    font-family: Century Gothic;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    background: #ccc;
+    text-align: center;
+    justify-content: center;
+    width: 250px;
+
+    border: 1px solid #ee9e49;
+}
+
 .title a {
     color: #333;
     text-decoration: none;
     font-family: cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 0 0 0;
+
 }
+
 .title a:hover {
     color: #0d1f4a;
     text-decoration: none;
     font-family: cursive;
 }
+
+.title h3 {
+    font-size: 26px;
+    line-height: 30px;
+}
+
 .jumbotron.text-center.py-2 a {
     color: #333;
 }
