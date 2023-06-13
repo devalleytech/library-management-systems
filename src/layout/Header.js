@@ -82,8 +82,7 @@ const Header = () => {
                 </ul>
                 <div className="form-inline ">
                         {userStatus && <div className="welcome">
-                            Welcome:&nbsp;<small onClick={openModal}>{userInfo?.fname}</small> 
-                            &nbsp;&nbsp;<Link className="top-link" to="/dashboard">
+                           <Link className="top-link" to="/dashboard">
                                 <button className="btn btn-secondary">
                                       Dashboard
                                 </button>

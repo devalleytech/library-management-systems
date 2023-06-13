@@ -121,15 +121,20 @@ const AddBook = () => {
                   <div className="d-flex flex-row align-items-center py-3">
                     <div className="form-outline flex-fill">
                     <label htmlFor="publisher" className="form-label">Publisher *</label>
-                    <Field name="publisher" type="text" className="form-control" />
+                    <Field name="publisher" type="text" className="form-control"  />
                         <ErrorMessage name="publisher" component="span" className="alert alert-danger py-1" />
                    </div>
                   </div>
                   
                   <div className="d-flex flex-row align-items-center py-3">
                     <div className="form-outline flex-fill">
-                    <label htmlFor="book_status" className="form-label">Book status *</label>
-                    <Field name="book_status" type="text" className="form-control" />
+                      <label htmlFor="book_status" className="form-label">Book Available Status *</label>
+                      <Field as="select" name="book_status" className="form-select">
+                         <option  className="dropdown-item">Select</option>
+                        <option  className="dropdown-item" value="yes">Yes</option>
+                        <option  className="dropdown-item" value="no">No</option>
+                      </Field>
+                    {/* <Field name="book_status" type="text" className="form-control" /> */}
                         <ErrorMessage name="book_status" component="span" className="alert alert-danger py-1" />
                    </div>
                   </div>
@@ -170,8 +175,6 @@ const AddBook = () => {
         </div>
           <p className="col-sm-10 mx-4 py-4 mb-4 p-4"></p>
           </div>
-
-
     </div>
   );
 };

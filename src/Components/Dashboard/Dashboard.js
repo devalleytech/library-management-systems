@@ -61,11 +61,18 @@ const Dashboard = () => {
         {(checkForoutlet==="/dashboard") && <div className="py-2 mt-2">
           
           <div className="jumbotron text-center py-2 mt-4">
-            <Link><h1>Dashboard</h1></Link>
+            <h1 className="userInfo">Welcome</h1><span className="username">{getUser?.fname+" "+getUser?.lname}</span>
           </div>
-          <div className="container py-4">
+          <div className="container py-4 mt-4">
              <p className="col-sm-10 mx-4 py-2 mb-2 p-4"></p> 
             <div className="row">
+
+              <div className="col-sm-3 col-md-3">
+                  <div className="title">
+                  <Link onClick={openModal}><h3>Profile</h3></Link>
+                  <span className="px-2"><FaRegUserCircle size={22} color="#333b7d" /></span>
+                </div>
+              </div>
               <div className="col-sm-3 col-md-3">
                   <div className="title">
                     <Link to="/dashboard/users-list"><h3>Users</h3></Link>
@@ -73,13 +80,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="col-sm-3 col-md-3">
-                  <div className="title">
-                  <Link onClick={openModal}><h3>Profile</h3></Link>
-                  <span className="px-2"><FaRegUserCircle size={22} color="#333b7d" /></span>
-                    
-                </div>
-              </div>
+              
               
               <div className="col-sm-3 col-md-3">
                   <div className="title">
@@ -115,7 +116,7 @@ const Dashboard = () => {
                 onRequestClose={closeModal}
                 style={customStyles} contentLabel="User information">
                 <div className="table-responsive">  
-                <div className="usertitle"><h4>Welcome: <i>{getUser?.role}</i></h4>
+                <div className="usertitle"><h2>User Profile</h2>
                  <button type="button" class="btn-close" aria-label="Close" onClick={closeModal}></button></div>   
                     <table className="table bgCustom table-responsive w-100 d-block d-md-table">
                     <tbody>

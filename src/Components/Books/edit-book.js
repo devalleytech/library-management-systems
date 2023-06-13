@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./books.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { postBook, getBook, updateBook } from '../../Utility/Services/BookService';
+import {  updateBook } from '../../Utility/Services/BookService';
 import { FaRegListAlt } from "react-icons/fa";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -38,8 +38,12 @@ const validationRule = Yup.object({
 const EditBook = () => {
 
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const [formValues, setformValues] = useState(state);
+  const { bookData } = useLocation();
+  const [formValues, setformValues] = useState(null);
+
+    useEffect(()=>{
+      setformValues(bookData);
+    }, [bookData]);
 
 
   return (
@@ -61,7 +65,7 @@ const EditBook = () => {
               <div className="col-sm-8 col-md-8 card">
           <div className="row mt-4 py-4 px-4">
            <Formik
-                initialValues={formValues || intialBook}
+                initialValues={ formValues || intialBook }
                 validationSchema={validationRule}
                 enableReinitialize
                 onSubmit={(values, { setSubmitting }) => {

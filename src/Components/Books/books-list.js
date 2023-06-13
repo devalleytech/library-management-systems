@@ -41,7 +41,7 @@ const BookList = () => {
   }, []);
 
   const editBook = (resObj) => {
-    navigate("/dashboard/edit-book", {state:resObj});
+    navigate("/dashboard/edit-book", {bookData:resObj});
   }
 
     return (

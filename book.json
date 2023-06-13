@@ -5,7 +5,7 @@
       "subtitle": "asdsad",
       "quantity": "dasdsa",
       "language": "dasdasdasd",
-      "publication_date": "2023-06-14",
+      "publication_date": "2023-06-13",
       "publisher": "sadaddd",
       "publication_place": "dsadsadd",
       "book_status": "asdsad",
@@ -27,6 +27,20 @@
       "price": "gfdgdfg",
       "createdAt": "Sun Jun 11 2023",
       "id": 2
+    },
+    {
+      "title": "ddfSF",
+      "subtitle": "DSGDSFdsfsdf",
+      "quantity": "fffeew",
+      "language": "ffesf",
+      "publication_date": "2023-06-15",
+      "publisher": "sdfdsfsd",
+      "publication_place": "awdrw",
+      "book_status": "yes",
+      "description": "dfgdfgd",
+      "price": "sfegegw",
+      "createdAt": "Tue Jun 13 2023",
+      "id": 3
     }
   ]
 }
