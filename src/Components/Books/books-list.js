@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaEdit, FaPlusSquare } from "react-icons/fa";
-import "./books.css";
+import { FaEdit, FaPlusSquare, FaRegTrashAlt } from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
-import { getBook } from '../../Utility/Services/BookService';
+import { getBook, deleteSingleBook } from '../../Utility/Services/BookService';
+import "./books.css";
 
 const BookList = () => {
 
-  
     const navigate = useNavigate();
     const [storeBookValues, setStoreBookValues] = useState([]);
     const [searchBook, setSearchBook] = useState("");
@@ -41,8 +40,15 @@ const BookList = () => {
   }, []);
 
   const editBook = (resObj) => {
-    navigate("/dashboard/edit-book", {bookData:resObj});
+    navigate("/dashboard/edit-book", {state:resObj});
   }
+
+  const deleteListItem = (id) => {
+    deleteSingleBook(id).then((res) => {
+      getAllBooks();
+    });
+  }
+
 
     return (
      <>
@@ -85,7 +91,17 @@ const BookList = () => {
                       <td>{res.quantity}</td>
                       <td>{res.book_status}</td>
                       <td>{res.createdAt}</td>
-                      <td><button style={{border:'none'}} onClick={() => editBook(res)}><FaEdit size={22} /></button></td>
+                      <td>
+                        <button style={{ border: 'none', color:"#333b7d" }} onClick={() => editBook(res)}><FaEdit size={22} />
+                        </button>&nbsp;
+                        
+                          <button style={{ border: 'none', color: "#880d09" }} onClick={ () => {if(window.confirm('Do you want to Delete this book?')){deleteListItem(res.id)};}}>
+
+                         
+                        <FaRegTrashAlt size={22} onclick="" />
+                        </button>
+                       
+                      </td>
                   </tr>)
                     })
                   }

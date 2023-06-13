@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./books.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { postBook, getBook } from '../../Utility/Services/BookService';
+import { postBook } from '../../Utility/Services/BookService';
 import { FaRegListAlt } from "react-icons/fa";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -12,6 +12,35 @@ import * as Yup from 'yup';
 const AddBook = () => {
 
   const navigate = useNavigate();
+
+  const bookIntialvalue = {
+    title: "",
+    subtitle: "",
+    category:"",
+    quantity: "",
+    language: "",
+    publication_date: "",
+    publisher: "",
+    publication_place: "",
+    book_status: "",
+    description: "",
+    price: "",
+    createdAt: new Date().toString('dd/mm/yy').split(',')[0].slice(0, 15),
+  };
+
+  const bookValudation = Yup.object({
+    title: Yup.string().max(40, 'Must be 20 characters or less').required('Title Required'),
+    subtitle: Yup.string().max(20, 'Must be 20 characters or less').required('Subtitle Required'),
+    category: Yup.string().max(20, 'Must be 20 characters or less').required('Category Required'),
+    quantity: Yup.number().required('Quantity Required'),
+    language: Yup.string().required('Quantity Required'),
+    publication_date: Yup.string().required('Publication date Required'),
+    publisher: Yup.string().required('Publisher Required'),
+    publication_place: Yup.string().required('Publication place Required'),
+    book_status: Yup.string().required('Book Status Required'),
+    description: Yup.string().required('Description Required'),
+    price: Yup.string().required('Price Required'),
+  });
 
   return (
     <div className="row d-flex">
@@ -33,43 +62,20 @@ const AddBook = () => {
               <div className="col-sm-8 col-md-8 card">
                <div className="row mt-4 py-4 px-4">
            <Formik
-                initialValues={{
-                  title: "",
-                  subtitle: "",
-                  quantity: "",
-                  language: "",
-                  publication_date: "",
-                  publisher: "",
-                  publication_place: "",
-                  book_status:"",
-                  description: "",
-                  price: "",
-                  createdAt: new Date().toString('dd/mm/yy').split(',')[0].slice(0,15),
-                }}
-                  validationSchema = {Yup.object({
-                  title: Yup.string().max(20, 'Must be 20 characters or less').required('Title Required'),
-                  subtitle: Yup.string().max(20, 'Must be 20 characters or less').required('Subtitle Required'),
-                  quantity: Yup.string().required('Quantity Required'),
-                  language: Yup.string().required('Quantity Required'),
-                  publication_date: Yup.string().required('Publication date Required'),
-                  publisher:Yup.string().required('Publisher Required'),
-                  publication_place: Yup.string().required('Publication place Required'),
-                  book_status: Yup.string().required('Book Status Required'),
-                  description: Yup.string().required('Description Required'),
-                  price: Yup.string().required('Price Required'),
-                })}
-                onSubmit={(values, { setSubmitting }) => {
+                  initialValues={bookIntialvalue}
+                  validationSchema = {bookValudation}
+                  onSubmit={(values, { setSubmitting }) => {
                   setTimeout(() => {
                     postBook(values).then((result) => {
-                              toast.success('Book Added Successfully!');
-                              setTimeout(() => {
-                                navigate("/dashboard/books-list");
-                              }, 4000);
-                          }).catch(e => {
-                        console.log(e);
-                      });
-                    setSubmitting(false);
-                  }, 400);
+                      toast.success('Book Added Successfully!');
+                      setTimeout(() => {
+                        navigate("/dashboard/books-list");
+                      }, 4000);
+                    }).catch(e => {
+                  console.log(e);
+                });
+               setSubmitting(false);
+              }, 400);
                 }}
               >
              <Form className="mx-1 mx-md-6">
@@ -79,15 +85,23 @@ const AddBook = () => {
                       <Field name="title" type="text" className="form-control" />
                         <ErrorMessage component="span" className="alert alert-danger py-1" name="title" />
                     </div>
-                    
                   </div>
                   <div className="d-flex flex-row align-items-center py-3">
                       <div className="form-outline flex-fill">
                     <label htmlFor="subtitle" className="form-label">Subtitle *</label>
                       <Field name="subtitle" type="text" className="form-control" />
-                        <ErrorMessage component="span" className="alert alert-danger py-1"  name="subtitle" />
+                      <ErrorMessage component="span" className="alert alert-danger py-1"  name="subtitle" />
                    </div>
-                    </div>
+                  </div>
+                  
+                  <div className="d-flex flex-row align-items-center py-3">
+                      <div className="form-outline flex-fill">
+                    <label htmlFor="category" className="form-label">Category *</label>
+                      <Field name="category" type="text" className="form-control" />
+                      <ErrorMessage component="span" className="alert alert-danger py-1"  name="category" />
+                   </div>
+                  </div>
+                  
                     <div className="d-flex flex-row align-items-center py-3">
                       <div className="form-outline flex-fill">
                       <label htmlFor="quantity" className="form-label">Quantity *</label>
@@ -99,7 +113,7 @@ const AddBook = () => {
                     <div className="form-outline flex-fill">
                     <label htmlFor="language" className="form-label">Language *</label>
                       <Field name="language" type="text" className="form-control" />
-                        <ErrorMessage component="span" className="alert alert-danger py-1" name="language" />
+                      <ErrorMessage component="span" className="alert alert-danger py-1" name="language" />
                    </div>
                   </div>
                   <div className="d-flex flex-row align-items-center py-3">

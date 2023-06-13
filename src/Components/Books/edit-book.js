@@ -11,6 +11,7 @@ import * as Yup from 'yup';
 const intialBook = {
   title: "",
   subtitle: "",
+  category:"",
   quantity: "",
   language: "",
   publication_date: "",
@@ -23,9 +24,10 @@ const intialBook = {
 };
 
 const validationRule = Yup.object({
-  title: Yup.string().max(20, 'Must be 20 characters or less').required('Title Required'),
+  title: Yup.string().max(40, 'Must be 20 characters or less').required('Title Required'),
   subtitle: Yup.string().max(20, 'Must be 20 characters or less').required('Subtitle Required'),
-  quantity: Yup.string().required('Quantity Required'),
+  category: Yup.string().max(20, 'Must be 20 characters or less').required('Category Required'),
+  quantity: Yup.number().required('Quantity Required'),
   language: Yup.string().required('Quantity Required'),
   publication_date: Yup.string().required('Publication date Required'),
   publisher: Yup.string().required('Publisher Required'),
@@ -38,31 +40,31 @@ const validationRule = Yup.object({
 const EditBook = () => {
 
   const navigate = useNavigate();
-  const { bookData } = useLocation();
+  const { state } = useLocation();
+  
+  useEffect(()=>{
+      setformValues(state);
+  }, [state]);
   const [formValues, setformValues] = useState(null);
-
-    useEffect(()=>{
-      setformValues(bookData);
-    }, [bookData]);
-
 
   return (
     <div className="row d-flex">
       <ToastContainer
-          position="top-center"
-          theme="light"
-          autoClose={2000}
-          hideProgressBar={true}
-          newestOnTop={true}
-          style={{ width: '500px' }}
+        position="top-center"
+        theme="light"
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        style={{ width: '500px' }}
       />
         <div className="jumbotron text-center py-2">
           <h1>Edit Book <Link to="/dashboard/books-list" className="iconplus">
-          <FaRegListAlt size={30} color="#333b7d" /></Link></h1>
+               <FaRegListAlt size={30} color="#333b7d" /></Link>
+          </h1>
        </div>
          <div className="container py-4">
             <div className="row d-flex justify-content-center align-items-center">
-              <div className="col-sm-8 col-md-8 card">
+            <div className="col-sm-8 col-md-8 card">
           <div className="row mt-4 py-4 px-4">
            <Formik
                 initialValues={ formValues || intialBook }
@@ -96,8 +98,15 @@ const EditBook = () => {
                     <label htmlFor="subtitle" className="form-label">Subtitle *</label>
                       <Field name="subtitle" type="text" className="form-control" />
                         <ErrorMessage component="span" className="alert alert-danger py-1"  name="subtitle" />
-                   </div>
+                    </div> 
+                  </div>
+                   <div className="d-flex flex-row align-items-center">
+                    <div className="form-outline flex-fill ">
+                    <label htmlFor="category" className="form-label">Category *</label>
+                      <Field name="category" type="text" className="form-control" />
+                        <ErrorMessage component="span" className="alert alert-danger py-1" name="category" />
                     </div>
+                  </div>
                     <div className="d-flex flex-row align-items-center py-3">
                       <div className="form-outline flex-fill">
                       <label htmlFor="quantity" className="form-label">Quantity *</label>

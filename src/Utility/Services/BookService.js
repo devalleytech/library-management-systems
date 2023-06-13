@@ -16,5 +16,8 @@ export const updateBook = async (data,id) => {
     return await axios.put(`${bookURL}/${id}`, data);
 }
 
+export const deleteSingleBook = async (id) => {
+    return await axios.delete(`${bookURL}/${id}`);
+}
 
 

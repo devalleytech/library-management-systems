@@ -14,7 +14,7 @@
       "fname": "sdfsdf",
       "lname": "efew",
       "phone": "9676765756",
-      "role": "Member",
+      "role": "Librarian",
       "password": "Cosrshcl@99",
       "email": "dvdgd@v.com",
       "id": 4
@@ -28,6 +28,16 @@
       "email": "gg123@gmail.com",
       "createdAt": "Sun Jun 11 2023",
       "id": 5
+    },
+    {
+      "fname": "Ghan ",
+      "lname": "Shyam",
+      "phone": "9540613845",
+      "role": "Librarian",
+      "password": "Cosrshcl@99",
+      "email": "ghan123@gmail.com",
+      "createdAt": "Tue Jun 13 2023",
+      "id": 6
     }
   ]
 }
