@@ -33,7 +33,7 @@ input#searchUsers {
     border: 1px solid #ccc;
 }
 
-/* .table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-    background-color: rgb(255, 212, 112);
-} */
+.jumbotron.text-center.py-4.py-4.px-4 h1,
+a {
+    color: #333;
+}

@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEdit, FaPlusSquare, FaRegTrashAlt } from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
-import { getBook, deleteSingleBook } from '../../Utility/Services/BookService';
+import { getBook, deleteSingleBook, updateBook } from '../../Utility/Services/BookService';
+
+
 import "./books.css";
+import { useUserInfoContext } from "../../Utility/ContextApi/user-context";
 
 const BookList = () => {
 
-    const navigate = useNavigate();
+   const navigate = useNavigate();
+   const { getUser } = useUserInfoContext();
     const [storeBookValues, setStoreBookValues] = useState([]);
     const [searchBook, setSearchBook] = useState("");
     
@@ -49,13 +53,16 @@ const BookList = () => {
     });
   }
 
-
+  const borrow = (bookObj) => {
+    navigate("/dashboard/borrow-book", {state:bookObj});
+  }
     return (
      <>
        <div className="row d-flex">
         <div className="jumbotron text-center py-2">
             <h1>Book List<Link to="/dashboard/addbook" className="iconplus">
-            <FaPlusSquare size={30} color="#333b7d" /></Link></h1>
+              {getUser.role === "Librarian" && <FaPlusSquare size={30} color="#333b7d" /> }</Link>
+            </h1>
        </div>
          <div className="container py-4">
             <div className="row d-flex justify-content-center align-items-center">
@@ -79,7 +86,7 @@ const BookList = () => {
                     <th scope="col">Quantity</th>
                     <th scope="col">Book status</th>       
                     <th scope="col">Created At</th>
-                    <th>Action</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -91,17 +98,15 @@ const BookList = () => {
                       <td>{res.quantity}</td>
                       <td>{res.book_status}</td>
                       <td>{res.createdAt}</td>
-                      <td>
-                        <button style={{ border: 'none', color:"#333b7d" }} onClick={() => editBook(res)}><FaEdit size={22} />
+                      {getUser.role === "Librarian" && <td>
+                        <button style={{ border: 'none', color: "#333b7d" }} onClick={() => editBook(res)}><FaEdit size={22} />
                         </button>&nbsp;
-                        
-                          <button style={{ border: 'none', color: "#880d09" }} onClick={ () => {if(window.confirm('Do you want to Delete this book?')){deleteListItem(res.id)};}}>
-
-                         
-                        <FaRegTrashAlt size={22} onclick="" />
+                        <button style={{ border: 'none', color: "#880d09" }} onClick={() => { if (window.confirm('Do you want to Delete this book?')) { deleteListItem(res.id) }; }}>
+                          <FaRegTrashAlt size={22} onclick="" />
                         </button>
-                       
-                      </td>
+                      </td>}
+                      {(res.quantity > 0) && <td><button className="btn btn-info" onClick={() => borrow(res)}>{"Borrow Book"}</button></td>}
+                       {(!res.quantity>0) && <td><button className="btn btn-danger">{"Not Available"}</button></td>}
                   </tr>)
                     })
                   }

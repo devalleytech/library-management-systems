@@ -17,12 +17,12 @@ const Login = () => {
   const userStatusAfterlogin = localStorage.getItem("userStatus");
   const [userStatus, setUserStatus] = useState(userStatusAfterlogin);
 
-     useEffect(() => {
-       setUserStatus(userStatusAfterlogin);
-        if (userStatus) {
-        navigate("/dashboard");
-       } 
-     }, [userStatus]);
+  useEffect(() => {
+    setUserStatus(userStatusAfterlogin);
+    if (userStatus) {
+    navigate("/dashboard");
+    } 
+  }, [userStatus]);
   
 
   return (

@@ -1,18 +1,20 @@
 import React, {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserEdit } from "react-icons/fa";
+import { useUserInfoContext } from "../../Utility/ContextApi/user-context";
 
 const Userlist = () => {
   
   const navigate = useNavigate();
+  const { getUser } = useUserInfoContext();
   const [users, setUsers] = useState([]);
  
 
-    useEffect(() => {
+  useEffect(() => {
+    console.log(getUser.role);
         fetch('http://localhost:3030/user')
         .then(response => response.json()) 
         .then(data => {
-          console.log(data);
           setUsers(data);
         })
         .catch(error => console.error(error));
@@ -41,7 +43,7 @@ const Userlist = () => {
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
                     <th scope="col">Created At</th>
-                    <th>Update Role</th>
+                      {getUser.role === "Librarian" && <th>Update Role</th>}
                   </tr>
                 </thead>
                 <tbody>
@@ -52,11 +54,11 @@ const Userlist = () => {
                       <td>{res.email}</td>
                       <td>{res.role}</td>
                       <td>{res.createdAt}</td>
-                      <td><button style={{border:'none'}} onClick={() => editRole(res)}><FaUserEdit className="logoutIcon" /></button></td>
+                      {getUser.role === "Librarian" && <td><button style={{ border: 'none' }} onClick={() => editRole(res)}><FaUserEdit className="logoutIcon" /></button></td>}
                   </tr>)
                   })
                   }
-                
+              
                 </tbody>
               </table>
                   <div className="py-1"></div>

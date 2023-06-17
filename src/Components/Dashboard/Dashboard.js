@@ -27,14 +27,15 @@ const Dashboard = () => {
   const [books, setBooks] = useState([]);
    const [modalIsOpen, setIsOpen] = useState(false);
  
-    useEffect(() => {
+  useEffect(() => {
+      
         fetch('http://localhost:3030/user')
         .then(response => response.json()) 
         .then(data => {
           setUsers(data);
         })
         .catch(error => console.error(error));
-    }, [users]);
+    }, []);
   
     useEffect(() => {
         fetch('http://localhost:3131/book')
@@ -43,7 +44,7 @@ const Dashboard = () => {
           setBooks(data);
         })
         .catch(error => console.error(error));
-    }, [books]);
+    }, []);
   
   
     function openModal() {
@@ -69,12 +70,12 @@ const Dashboard = () => {
                   <span className="px-2"><FaRegUserCircle size={22} color="#333b7d" /></span>
                 </div>
               </div>
-              <div className="col-sm-3 col-md-3">
-                  <div className="title">
-                    <Link to="/dashboard/users-list"><h3>Users</h3></Link>
-                    <span className="badge bg-primary badge-pill">{users && users.length}</span>
+              {getUser.role === "Librarian" && <div className="col-sm-3 col-md-3">
+                <div className="title">
+                  <Link to="/dashboard/users-list"><h3>Users</h3></Link>
+                  <span className="badge bg-primary badge-pill">{users && users.length}</span>
                 </div>
-              </div>
+              </div>}
               <div className="col-sm-3 col-md-3">
                   <div className="title">
                     <Link to="/dashboard/books-list"><h3>Books</h3></Link>
@@ -83,10 +84,16 @@ const Dashboard = () => {
               </div>
               <div className="col-sm-3 col-md-3">
                   <div className="title">
+                    <Link to="/dashboard/borrow-book-list"><h3>Borrowed Books</h3></Link>
+                    <span className="badge bg-primary badge-pill">{books && books.length}</span>
+                </div>
+              </div>
+              {getUser.role === "Librarian" && <div className="col-sm-3 col-md-3">
+                <div className="title">
                   <Link to="/dashboard/addbook"><h3>Add Book</h3></Link>
                   <span className="px-2"><FaPlusSquare size={25} color="#333b7d" /></span>
                 </div>
-              </div>
+              </div>}
               
             </div>
             <div className="row mt-4 pt-4">
