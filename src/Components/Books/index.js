@@ -7,5 +7,6 @@ const BorrowBookForm = lazy(() => import('./borrowbook-form'));
 const BorrowedBookList = lazy(() => import('./books-borrowed-list'));
 const UserBorrowedBookList = lazy(() => import('./users-borrowed-list'));
 const ReturnBorrowBookForm = lazy(() => import('./return-borrow-book-request'));
+const userPenaltyList = lazy(() => import('./users-penalty-list'));
 
-export { AddBook, BookList, BookEdit, BorrowBookForm, BorrowedBookList, UserBorrowedBookList, ReturnBorrowBookForm };
+export { AddBook, BookList, BookEdit, BorrowBookForm, BorrowedBookList, UserBorrowedBookList, ReturnBorrowBookForm, userPenaltyList };

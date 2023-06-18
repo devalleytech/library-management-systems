@@ -27,10 +27,10 @@ const Dashboard = () => {
   const [books, setBooks] = useState([]);
   const [borrowedbooks, setBorrowedbooks] = useState([]);
   const [usersborrowedbooks, setUsersborrowedbooks] = useState([]);
+  const [userPenalty, setuserPenalty] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
  
   useEffect(() => {
-      
         fetch('http://localhost:3030/user')
         .then(response => response.json()) 
         .then(data => {
@@ -52,7 +52,7 @@ const Dashboard = () => {
         fetch('http://localhost:3132/borrowedBook')
         .then(response => response.json()) 
           .then(data => {
-          const borroerUser = data.filter(res => res.userId === getUser.id);
+            const borroerUser = data.filter(res => res.userId === getUser.id);
           setBorrowedbooks(borroerUser);
         })
         .catch(error => console.error(error));
@@ -66,7 +66,20 @@ const Dashboard = () => {
           setUsersborrowedbooks(data);
         })
         .catch(error => console.error(error));
-    }, []);
+   }, []);
+  
+  
+  
+
+    useEffect(() => {
+        fetch('http://localhost:3133/notification')
+        .then(response => response.json()) 
+          .then(data => {
+            const pennaltyUser = data.filter(res => res.userId === getUser.id);
+            setuserPenalty(pennaltyUser);
+        })
+        .catch(error => console.error(error));
+  }, []);
   
   
     function openModal() {
@@ -109,6 +122,12 @@ const Dashboard = () => {
                 <div className="title">
                   <Link to="/dashboard/borrow-book-list"><h3>Borrowed Books</h3></Link>
                   <span className="badge bg-primary badge-pill">{borrowedbooks && borrowedbooks.length}</span>
+                </div>
+              </div>}
+              {getUser.role === "Member" && <div className="col ">
+                <div className="title">
+                  <Link to="/dashboard/users-penalty-list"><h3>Penalty</h3></Link>
+                  <span className="badge bg-primary badge-pill">{userPenalty && userPenalty.length}</span>
                 </div>
               </div>}
           </div>

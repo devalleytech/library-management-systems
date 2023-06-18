@@ -12,7 +12,6 @@ import * as Yup from 'yup';
 const AddBook = () => {
 
   const navigate = useNavigate();
-
   const bookIntialvalue = {
     title: "",
     subtitle: "",
@@ -61,7 +60,7 @@ const AddBook = () => {
             <div className="row d-flex justify-content-center align-items-center">
               <div className="col-sm-8 col-md-8 card">
                <div className="row mt-4 py-4 px-4">
-           <Formik
+              <Formik
                   initialValues={bookIntialvalue}
                   validationSchema = {bookValudation}
                   onSubmit={(values, { setSubmitting }) => {

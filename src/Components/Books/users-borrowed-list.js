@@ -22,8 +22,8 @@ const UserBorrowedBookList = () => {
     getAllgetBorrowedBooks();
   }, []);
 
-  const returningRequest = (userId, userName) => {
-    const userObj = { userId, userName };
+  const returningRequest = (userId, userName, bookTitle) => {
+    const userObj = { userId, userName, bookTitle };
     navigate("/dashboard/return-borrow-book-request", {state:userObj});
   }
 
@@ -43,7 +43,7 @@ const UserBorrowedBookList = () => {
                 <thead className="thead-dark">
                <tr>
                     <th>SR #</th>
-                    <th scope="col">Title</th>
+                    <th scope="col">Book Title</th>
                     <th scope="col">Borrowed Start Date</th>
                     <th scope="col">Borrowed End Date</th>
                     <th scope="col">User Name</th>
@@ -61,7 +61,7 @@ const UserBorrowedBookList = () => {
                       <td>{res.userName}</td>
                       <td style={{color:'red'}}>{Math.ceil(Math.abs(new Date(res.browwenddate) - new Date(res.createdAt)) / (1000 * 60 * 60 * 24))-1}</td>
                       {(Math.ceil(Math.abs(new Date(res.browwenddate) - new Date(res.createdAt)) / (1000 * 60 * 60 * 24)) > 1) && <td>
-                        <button className="btn btn-outline-danger" onClick={() => returningRequest(res.userId, res.userName)}>Return Request</button></td>}
+                        <button className="btn btn-outline-danger" onClick={() => returningRequest(res.userId, res.userName, res.title)}>Return Request</button></td>}
                   </tr>)
                     })
                       }    

@@ -7,8 +7,8 @@ const notificationURL = rootURL + 'notification';
 // const rootURLBorrow = 'http://localhost:3132/';
 
 
-// export const getBook = async () => {
-//     const res = await axios.get(bookURL);
+// export const getNotification = async () => {
+//     const res = await axios.get(notificationURL);
 //     return res.data;
 // }
 

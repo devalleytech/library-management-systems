@@ -24,13 +24,11 @@ const BorrowedBookList = () => {
     getAllgetBorrowedBooks();
   }, []);
 
-
     return (
      <>
        <div className="row d-flex">
         <div className="jumbotron text-center py-2">
-            <Link  className="iconplus"><h1>Borrowed Book List
-            </h1></Link>
+            <Link  className="iconplus"><h1>Borrowed Book List</h1></Link>
        </div>
          <div className="container py-4">
             <div className="row d-flex justify-content-center align-items-center">
