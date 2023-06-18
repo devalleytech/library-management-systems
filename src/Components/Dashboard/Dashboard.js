@@ -93,44 +93,44 @@ const Dashboard = () => {
                   <span className="px-2"><FaRegUserCircle size={22} color="#333b7d" /></span>
               </div>
             </div>
-            <div className="col ">
-              <div className="title">
+              {getUser.role === "Librarian" && <div className="col ">
+                <div className="title">
                   <Link to="/dashboard/users-list"><h3>Users</h3></Link>
                   <span className="badge bg-primary badge-pill">{users && users.length}</span>
                 </div>
-            </div>
+              </div>}
             <div className="col ">
               <div className="title">
                     <Link to="/dashboard/books-list"><h3>Books</h3></Link>
                     <span className="badge bg-primary badge-pill">{books && books.length}</span>
                 </div>
             </div>
-            <div className="col ">
-              <div className="title">
-                    <Link to="/dashboard/borrow-book-list"><h3>Borrowed Books</h3></Link>
-                    <span className="badge bg-primary badge-pill">{borrowedbooks && borrowedbooks.length}</span>
+              {getUser.role === "Member" && <div className="col ">
+                <div className="title">
+                  <Link to="/dashboard/borrow-book-list"><h3>Borrowed Books</h3></Link>
+                  <span className="badge bg-primary badge-pill">{borrowedbooks && borrowedbooks.length}</span>
                 </div>
-            </div>
+              </div>}
           </div>
           <div className="row mt-4 pt-4 px-4">
-            <div className="col ">
-              <div className="title">
+              {getUser.role === "Librarian" && <div className="col ">
+                <div className="title">
                   <Link to="/dashboard/addbook"><h3>Add Book</h3></Link>
                   <span className="px-2"><FaPlusSquare size={25} color="#333b7d" /></span>
                 </div>
-            </div>
+              </div>}
             <div className="col ">
                <div className="title">
                   <Link to="/dashboard/books-list"><h3>Search Book</h3></Link>
                   <span className="px-2"><FaSearch size={25} color="#333b7d" /></span>
                 </div>
             </div>
-             <div className="col">
+             {getUser.role === "Librarian" && <div className="col">
                 <div className="title">
                     <Link to="/dashboard/users-borrow-book-list"><h3>Users Borrowed Books</h3></Link>
                     <span className="badge bg-primary badge-pill">{usersborrowedbooks && usersborrowedbooks.length}</span>
-                </div>
-            </div>
+                </div> 
+            </div>}
            
           </div>
           </div>

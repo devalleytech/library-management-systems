@@ -105,8 +105,8 @@ const BookList = () => {
                           <FaRegTrashAlt size={22} onclick="" />
                         </button>
                       </td>}
-                      {(res.quantity > 0) && <td><button className="btn btn-info" onClick={() => borrow(res)}>{"Borrow Book"}</button></td>}
-                       {(!res.quantity>0) && <td><button className="btn btn-danger">{"Not Available"}</button></td>}
+                      {(res.quantity > 0 && getUser.role === "Member") && <td><button className="btn btn-info" onClick={() => borrow(res)}>{"Borrow Book"}</button></td>}
+                       {(!res.quantity>0 && getUser.role === "Member") && <td><button className="btn btn-danger">{"Not Available"}</button></td>}
                   </tr>)
                     })
                   }

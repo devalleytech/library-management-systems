@@ -37,3 +37,13 @@ input#searchUsers {
 a {
     color: #333;
 }
+
+.danger {
+    text-align: center;
+}
+
+.danger i {
+    color: #ae492b;
+    font-weight: 600;
+    text-align: center;
+}

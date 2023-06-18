@@ -15,7 +15,6 @@ const UserBorrowedBookList = () => {
   const getAllgetBorrowedBooks = () => {
     getBorrowedBook().then(result => {
       console.log(result);
-      // const borroerUser = result.filter(res => res.userId === getUser.id);
       setstoreUserBookValues(result)
     })
   }
@@ -47,8 +46,9 @@ const UserBorrowedBookList = () => {
                     <th scope="col">Title</th>
                     <th scope="col">Borrowed Start Date</th>
                     <th scope="col">Borrowed End Date</th>
-                     <th scope="col">User Name</th>
-                        <th scope="col">Action</th>  
+                    <th scope="col">User Name</th>
+                    <th scope="col" style={{color:'green'}}>Exceeded Days</th>
+                     <th scope="col">Action</th>  
                   </tr>
                 </thead>
                 <tbody>
@@ -59,12 +59,16 @@ const UserBorrowedBookList = () => {
                       <td>{res.createdAt}</td>
                       <td>{res.browwenddate}</td>
                       <td>{res.userName}</td>
-                       <td><button className="btn btn-secondary btn-sm" onClick={()=> returningRequest(res.userId, res.userName)}>Return Request</button></td>
+                      <td style={{color:'red'}}>{Math.ceil(Math.abs(new Date(res.browwenddate) - new Date(res.createdAt)) / (1000 * 60 * 60 * 24))-1}</td>
+                      {(Math.ceil(Math.abs(new Date(res.browwenddate) - new Date(res.createdAt)) / (1000 * 60 * 60 * 24)) > 1) && <td>
+                        <button className="btn btn-outline-danger" onClick={() => returningRequest(res.userId, res.userName)}>Return Request</button></td>}
                   </tr>)
                     })
-                  }
+                      }    
                  </tbody>
-              </table>
+                  </table>
+                  <div className="danger"><i>Note: More than 1 days would be a fine of 50 Rupees/day and we will request for return book.</i></div>
+                  <p className="col-sm-10 mx-4 py-1 mb-1 p-1"></p>
               </div>
               </div>
         </div>

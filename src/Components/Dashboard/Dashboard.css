@@ -55,7 +55,7 @@ span.badge.bg-primary.badge-pill {
 }
 
 .title {
-    height: 80px;
+    height: 100px;
     text-decoration: underline;
     font-family: Century Gothic;
     font-weight: 500;
@@ -64,8 +64,6 @@ span.badge.bg-primary.badge-pill {
     background: #ccc;
     text-align: center;
     justify-content: center;
-
-
     border: 1px solid #ee9e49;
 }
 

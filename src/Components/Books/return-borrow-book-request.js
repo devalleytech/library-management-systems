@@ -13,19 +13,18 @@ import "./books.css";
 const ReturnBorrowBookForm = () => {
 
   const { state } = useLocation();
-  
-  // console.log(state, "state state");
-
-    const navigate = useNavigate();
-    const { getUser } = useUserInfoContext();
-    const requestBook = {
-        returnMessage: null,
-    };
+  const navigate = useNavigate();
+  const { getUser } = useUserInfoContext();
+  const requestBook = {
+    returnMessage: null,
+    penalty:null
+  };
      const requestBookValudation = Yup.object({
-       returnMessage: Yup.string().required('Please return book!')
+       returnMessage: Yup.string().required('Please return book!'),
+       penalty: Yup.string().required('Add penalty'),
   });
 
-    return (
+return (
  <>
    <div className=" py-4 px-4">
         <ToastContainer
@@ -43,8 +42,7 @@ const ReturnBorrowBookForm = () => {
          <Formik
                   initialValues={requestBook}
                   validationSchema = {requestBookValudation}
-              onSubmit={(values, { setSubmitting }) => {
-                      
+                  onSubmit={(values, { setSubmitting }) => { 
                 setTimeout(() => {
                   const combineObj = { ...state, ...values };
                   console.log(combineObj, "combineObj");
@@ -61,16 +59,20 @@ const ReturnBorrowBookForm = () => {
                         }}
                     >
                    <Form className="mx-1 mx-md-6">
-                 
                   <div className="col-md-6 py-4 ">
                     <div className="form-outline">
                     <label htmlFor="returnMessage" className="form-label">Request Borrow Book *</label>
-                      <Field name="returnMessage" type="text" className="form-control" />
+                      <Field  name="returnMessage" type="text" className="form-control" />
                         <ErrorMessage component="span" className="alert alert-danger py-1" name="returnMessage" />
                     </div>
+                 </div>
+                 <div className="col-md-6">
+                    <div className="form-outline">
+                    <label htmlFor="penalty" className="form-label">Penalty*</label>
+                      <Field  name="penalty" type="number" className="form-control" />
+                        <ErrorMessage component="span" className="alert alert-danger py-1" name="penalty" />
                     </div>
-
-
+                    </div>
                   <div className="col-md-6 mt-4 form-outline flex-fill w-100 mt-4 buttonClass">
                       <button type="submit"  className="btn-large px-4">
                       Submit
