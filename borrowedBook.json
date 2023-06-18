@@ -2,21 +2,12 @@
   "borrowedBook": [
     {
       "userId": 2,
-      "bookId": 5,
+      "bookId": 1,
       "userName": "dszdsds",
-      "title": "sdfsdnfq",
+      "title": "gpgpgggg",
       "browwenddate": "2023-06-17",
-      "browwstartdate": "2023-06-16",
+      "createdAt": "Sat Jun 17 2023",
       "id": 1
-    },
-    {
-      "userId": 2,
-      "bookId": 2,
-      "userName": "dszdsds",
-      "title": "gdfgdfg",
-      "browwenddate": "2023-06-17",
-      "browwstartdate": "2023-06-16",
-      "id": 2
     },
     {
       "userId": 2,
@@ -24,16 +15,25 @@
       "userName": "dszdsds",
       "title": "gpgpgggg",
       "browwenddate": "2023-06-17",
-      "browwstartdate": "2023-06-16",
+      "createdAt": null,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "bookId": 2,
+      "userName": "dszdsds",
+      "title": "gdfgdfg",
+      "browwenddate": "2023-06-17",
+      "createdAt": "2023-06-17",
       "id": 3
     },
     {
       "userId": 5,
-      "bookId": 5,
+      "bookId": 2,
       "userName": "sdfsdf",
-      "title": "sdfsdnfq",
+      "title": "gdfgdfg",
       "browwenddate": "2023-06-17",
-      "browwstartdate": "2023-06-16",
+      "createdAt": "2023-06-17",
       "id": 4
     }
   ]

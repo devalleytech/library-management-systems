@@ -16,13 +16,10 @@ const BorrowBookForm = () => {
     const navigate = useNavigate();
     const { getUser } = useUserInfoContext();
     const bookBorrowenddate = {
-        browwstartdate:null,
         browwenddate: null,
     };
      const borrowbookValudation = Yup.object({
-         browwenddate: Yup.string().required('Start Borrowed Book date Required'),
-         browwstartdate: Yup.string().required('End Borrowed Book date Required')
-
+         browwenddate: Yup.string().required('Start Borrowed Book date Required')
   });
 
     return (
@@ -49,7 +46,7 @@ const BorrowBookForm = () => {
                             state.quantity -= 1;
                             updateBook(state, state.id).then(res => {
                             console.log(res, "res");
-                            const bookInitialValue = {userId:getUser.id, bookId: res.data.id, userName: getUser.fname, title:res.data.title, browwenddate:  values.browwenddate, browwstartdate: values.browwstartdate};
+                            const bookInitialValue = {userId:getUser.id, bookId: res.data.id, userName: getUser.fname, title:res.data.title, browwenddate:  values.browwenddate, createdAt: (new Date()).toISOString().split('T')[0]};
                             postBorrowedbook(bookInitialValue).then((result) => {
                                toast.success('Book Borrowed Successfully!');
                             setTimeout(() => {
@@ -65,14 +62,14 @@ const BorrowBookForm = () => {
                         }}
                     >
                    <Form>
-                 <div className="col-md-6  py-4 ">
+                 {/* <div className="col-md-6  py-4 ">
                                  
                     <div className="form-outline">
                     <label htmlFor="browwstartdate" className="form-label">Borrow Start Date *</label>
                       <Field name="browwstartdate" type="date" className="form-control" />
                         <ErrorMessage component="span" className="alert alert-danger py-1" name="browwstartdate" />
                     </div>
-                  </div>
+                  </div> */}
                             
                   <div className="col-md-6 py-4 ">
                     <div className="form-outline">

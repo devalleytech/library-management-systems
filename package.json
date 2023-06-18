@@ -27,7 +27,8 @@
     "eject": "react-scripts eject",
     "api_user": "json-server --watch user.json --port 3030",
     "api_book": "json-server --watch book.json --port 3131",
-    "api_book2": "json-server --watch borrowedBook.json --port 3132"
+    "api_book2": "json-server --watch borrowedBook.json --port 3132",
+    "api_book3": "json-server --watch notificationUsers.json --port 3133"
   },
   "eslintConfig": {
     "extends": [

@@ -64,7 +64,7 @@ span.badge.bg-primary.badge-pill {
     background: #ccc;
     text-align: center;
     justify-content: center;
-    width: 250px;
+
 
     border: 1px solid #ee9e49;
 }
@@ -108,4 +108,12 @@ span.username {
     color: #333b7d;
     font-weight: bold;
     text-decoration: none !important;
+}
+
+.border {
+    border-color: #ee9e49;
+}
+
+.card.card-body.mt-4 {
+    padding: 50px;
 }

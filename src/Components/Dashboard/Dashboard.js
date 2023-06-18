@@ -25,7 +25,9 @@ const Dashboard = () => {
 
   const [users, setUsers] = useState([]);
   const [books, setBooks] = useState([]);
-   const [modalIsOpen, setIsOpen] = useState(false);
+  const [borrowedbooks, setBorrowedbooks] = useState([]);
+  const [usersborrowedbooks, setUsersborrowedbooks] = useState([]);
+  const [modalIsOpen, setIsOpen] = useState(false);
  
   useEffect(() => {
       
@@ -46,6 +48,26 @@ const Dashboard = () => {
         .catch(error => console.error(error));
     }, []);
   
+  useEffect(() => {
+        fetch('http://localhost:3132/borrowedBook')
+        .then(response => response.json()) 
+          .then(data => {
+          const borroerUser = data.filter(res => res.userId === getUser.id);
+          setBorrowedbooks(borroerUser);
+        })
+        .catch(error => console.error(error));
+  }, []);
+  
+
+   useEffect(() => {
+        fetch('http://localhost:3132/borrowedBook')
+        .then(response => response.json()) 
+          .then(data => {
+          setUsersborrowedbooks(data);
+        })
+        .catch(error => console.error(error));
+    }, []);
+  
   
     function openModal() {
       setIsOpen(true);
@@ -57,7 +79,64 @@ const Dashboard = () => {
 
     return (
       <>
-        {(checkForoutlet==="/dashboard") && <div className="py-2 mt-2">
+       
+         {(checkForoutlet === "/dashboard") && <div className="mb-4">
+            <div className="jumbotron text-center py-4 mb-4 mt-4">
+            <h1 className="userInfo">Welcome</h1><span className="username">{getUser?.fname+" "+getUser?.lname}</span>
+        </div>
+      
+       <div className="card card-body mt-4">  
+          <div className="row col-centered px-4">
+            <div className="col">
+              <div className="title">
+                  <Link onClick={openModal}><h3>Profile</h3></Link>
+                  <span className="px-2"><FaRegUserCircle size={22} color="#333b7d" /></span>
+              </div>
+            </div>
+            <div className="col ">
+              <div className="title">
+                  <Link to="/dashboard/users-list"><h3>Users</h3></Link>
+                  <span className="badge bg-primary badge-pill">{users && users.length}</span>
+                </div>
+            </div>
+            <div className="col ">
+              <div className="title">
+                    <Link to="/dashboard/books-list"><h3>Books</h3></Link>
+                    <span className="badge bg-primary badge-pill">{books && books.length}</span>
+                </div>
+            </div>
+            <div className="col ">
+              <div className="title">
+                    <Link to="/dashboard/borrow-book-list"><h3>Borrowed Books</h3></Link>
+                    <span className="badge bg-primary badge-pill">{borrowedbooks && borrowedbooks.length}</span>
+                </div>
+            </div>
+          </div>
+          <div className="row mt-4 pt-4 px-4">
+            <div className="col ">
+              <div className="title">
+                  <Link to="/dashboard/addbook"><h3>Add Book</h3></Link>
+                  <span className="px-2"><FaPlusSquare size={25} color="#333b7d" /></span>
+                </div>
+            </div>
+            <div className="col ">
+               <div className="title">
+                  <Link to="/dashboard/books-list"><h3>Search Book</h3></Link>
+                  <span className="px-2"><FaSearch size={25} color="#333b7d" /></span>
+                </div>
+            </div>
+             <div className="col">
+                <div className="title">
+                    <Link to="/dashboard/users-borrow-book-list"><h3>Users Borrowed Books</h3></Link>
+                    <span className="badge bg-primary badge-pill">{usersborrowedbooks && usersborrowedbooks.length}</span>
+                </div>
+            </div>
+           
+          </div>
+          </div>
+          </div>}
+
+        {/* {(checkForoutlet==="/dashboard") && <div className="py-2 mt-2">
           <div className="jumbotron text-center py-2 mt-4">
             <h1 className="userInfo">Welcome</h1><span className="username">{getUser?.fname+" "+getUser?.lname}</span>
           </div>
@@ -88,6 +167,15 @@ const Dashboard = () => {
                     <span className="badge bg-primary badge-pill">{books && books.length}</span>
                 </div>
               </div>
+
+              <div className="col-sm-3 col-md-3">
+                  <div className="title">
+                    <Link to="/dashboard/users-borrow-book-list"><h3>Users Borrowed Books</h3></Link>
+                    <span className="badge bg-primary badge-pill">{books && books.length}</span>
+                </div>
+              </div>
+
+             
               {getUser.role === "Librarian" && <div className="col-sm-3 col-md-3">
                 <div className="title">
                   <Link to="/dashboard/addbook"><h3>Add Book</h3></Link>
@@ -105,7 +193,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-        </div>}
+        </div>} */}
 
         {(checkForoutlet!=="/dashboard") && <div className="py-4">
              <Outlet /> 
